@@ -18,11 +18,18 @@ export function copyArray(n,matrix1){
 
 }
 export function calBisection  (initialEquation ,initialXL,initialXR,initialError) {
+
     let equation = checkEquation(initialEquation)
-        equation = math.parse(equation).compile()
-    let  xl = math.bignumber(initialXL)
+
+    equation = math.parse(equation).compile()
+
+    let xl = math.bignumber(initialXL)
+
     let xr = math.bignumber(initialXR)
+
     let error = math.bignumber(initialError)
+    
+    console.log("arr")
 
 
     let arr = []
@@ -62,17 +69,17 @@ export function calBisection  (initialEquation ,initialXL,initialXR,initialError
 
       
         arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-        <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {xm}</span>
-        <span > Error : {checkError.toFixed(15)}</span>
+        <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {xm.toFixed(9).toString()}</span>
+        <span > Error : {checkError.toFixed(9).toString()}</span>
         </div>);
         i++;
-        
+        console.log(xm.toString())
        
     
     }
-    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {xm}</div>);
-            this.setState({ans:arr});
-    return(arr);
+    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {xm.toFixed(9).toString()}</div>);
+            
+    return arr;
 }
 
 export function calFalse(initialEquation ,initialXL,initialXR,initialError){
@@ -121,16 +128,16 @@ export function calFalse(initialEquation ,initialXL,initialXR,initialError){
         oldX1 = x1
 
         arr.push(<div style = {{fontSize : '25px' ,display : 'flex'}}>
-        <span style = {{width : '40%' , textAlign : 'left'}}> Iteration {i} : X is {x1} </span>
-        <span > Error : {checkError.toFixed(15)} </span>
+        <span style = {{width : '40%' , textAlign : 'left'}}> Iteration {i} : X is {x1.toFixed(9).toString()} </span>
+        <span > Error : {checkError.toFixed(9).toString()} </span>
 
         </div>)
         
         i++
         
      }
-     arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}>RESULT OF X IS {x1} </div>)
-        this.setState({arr : arr});
+     arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}>RESULT OF X IS {x1.toFixed(9).toString()} </div>)
+       
      return arr
 }
 
@@ -172,13 +179,13 @@ export function calOnepoint(initialEquation ,initialX,initialError){
        
         
         arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-        <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {X}</span>
-        <span > Error : {checkError.toFixed(15)}</span>
+        <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {X.toFixed(9).toString()}</span>
+        <span > Error : {checkError.toFixed(9).toString()}</span>
         </div>);
-        console.log(i);
+        
         i++;
      }
-      arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X}</div>);
+      arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X.toFixed(9).toString()}</div>);
      return arr
 }
 
@@ -190,23 +197,23 @@ export function calNewton(initialEquation, initialX, initialError) {
     equation = math.parse(equation)
     let X = math.bignumber(initialX)
 
-    let fXprime = math.derivative(equation,'x').compile()
-    
+    let fXprime = math.derivative(equation,'x')
+    let arr = []
     // console.log('aaa')
     let error = math.bignumber(initialError)
+    arr.push(<div style = {{textAlign : 'left' , fontSize : '25px'}}><span> f'(x) = {fXprime.toString()}</span></div>)
+    fXprime = fXprime.compile()
 
-    
-
-    let arr = []
+   
 
     let i = 1;
 
 
     let oldX = X;
 
-    let checkError = 9999
+    let checkError = 9999 
     let oldcheckError = 9999;
-    arr.push(<div style = {{textAlign : 'left' , fontSize : '25px'}}><span> f'(x) = {fXprime}</span></div>)
+   
     while (checkError > error) {
 
         let fXdiff = fXprime.evaluate({x : X})
@@ -229,22 +236,23 @@ export function calNewton(initialEquation, initialX, initialError) {
        
 
         arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-               <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {X}</span>
-               <span > Error : {checkError.toFixed(15)}</span>
+               <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {X.toFixed(9).toString()}</span>
+               <span > Error : {checkError.toFixed(9).toString()}</span>
                </div>);
                console.log(i);
                i++;
 
     }
-    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X}</div>);
+    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X.toFixed(9).toString()}</div>);
    
     return arr
 }
 export function calSecant(initialEquation, initialX0,initialX1, initialError) {
-
+    
     let equation = checkEquation(initialEquation)
-
+    console.log('aaa')
     equation = math.parse(equation).compile()
+    
     let x0 = math.bignumber(initialX0)
     let x1 = math.bignumber(initialX1)
 
@@ -252,7 +260,7 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
    let fx0 = equation.evaluate({x:x0})
    let fx1 = equation.evaluate({x:x1})
     
-    // console.log('aaa')
+    console.log('bbb')
     let error = math.bignumber(initialError)
 
     
@@ -265,11 +273,11 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
     let oldX = 0;
 
     let checkError = 9999
-    let oldcheckError = 9999;
+   
     while (checkError > error) {
 
        x = math.subtract(x1 , math.divide(math.multiply(fx1,math.subtract(x0 , x1) ), math.subtract(fx0 , fx1)));
-            
+       console.log(x.toString())     
             checkError = Math.abs((x - x1)/x);
             
             fx0 = fx1;
@@ -279,25 +287,21 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
 
 
        
-        if (checkError > oldcheckError) {
-            arr.push({ key: i, iteration: "ลู่ออก", x: "ลู่ออก", error: "ลู่ออก" })
-            break;
-        }
-        oldcheckError = checkError;
+         oldX = checkError;
 
-        oldX = x
-
+       
+      
 
         arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-            <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {x}</span>
-            <span > Error : {checkError.toFixed(15)}</span>
+            <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {x.toFixed(9).toString()}</span>
+            <span > Error : {checkError.toFixed(9).toString()}</span>
             </div>);
             
             i++;
 
     }
     
-    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {x}</div>);
+    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {x.toFixed(9).toString()}</div>);
     
     return arr
 }

@@ -71,7 +71,7 @@ class Secant extends React.Component{
         }
 
         try{
-            this.setState({ arr: calSecant(this.state.equation, this.state.x0, this.state.x1, this.state.error) })
+            this.setState({ arr: calSecant(this.state.Equation, this.state.X0, this.state.X1, this.state.E) })
         }
         catch(error){
             this.setState({status : <div style = {{color :  'red'}}> ใส่ฟังก์ชั่นไม่ถูกต้อง</div>});

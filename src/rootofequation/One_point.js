@@ -97,7 +97,7 @@ class One_point extends React.Component{
                 <span> <Input  placeholder = 'Error=0.00000' value = {this.state.E} onChange = {this.getE} style = {{width : '100px'}}/>     </span>
             </div>
             <div style = {{marginTop : '10px'}}>
-            <span><Button type = 'primary' onClick = {this.cal_secant} >Calculate</Button></span>
+            <span><Button type = 'primary' onClick = {this.cal_onepoint} >Calculate</Button></span>
                 <span style = {{padding : '0px 0px 0px 30px'}}>
                     <Button size='medium' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button>
                     </span>
