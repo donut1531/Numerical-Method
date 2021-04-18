@@ -3,6 +3,8 @@ import {Input , Button} from 'antd';
 
 import all_Api from '../API/index'
 import {Modal_roe} from '../components/Modal.js'
+import {calFalse} from '../Calculator'
+const math = require('mathjs');
 
 class False_position extends React.Component{
 
@@ -19,7 +21,8 @@ class False_position extends React.Component{
          status : null,
          isModalVisible : false,
          apiData : [],
-         hasData : false}
+         hasData : false
+        };
         
         async getData(){
             let tempData = null
@@ -35,9 +38,9 @@ class False_position extends React.Component{
         let index = e.currentTarget.getAttribute('name').split('_')
             index = parseInt(index[1])
             this.setState({
-                equation: this.state.apiData[index]["equation"],
-                xl : this.state.apiData[index]["xl"],
-                xr : this.state.apiData[index]["xr"],
+                Equation: this.state.apiData[index]["equation"],
+                XL : this.state.apiData[index]["xl"],
+                XR : this.state.apiData[index]["xr"],
                 error : this.state.apiData[index]["error"],
                 isModalVisible : false
             })
@@ -74,63 +77,9 @@ class False_position extends React.Component{
         
         try{
 
-            let Equation = this.state.Equation;
-
-            Equation = fixed_fx(Equation);
-            equation(2,Equation); // debug
-            
-
-            let XL = parseFloat(this.state.XL);
-            let XR = parseFloat(this.state.XR);
-
-            let X1 = parseFloat(this.state.X1);
-
-            let E  = parseFloat(this.state.E);
-            let ERROR = 99999;
-
-            
-            
-            let arr = [];
-
-            let X1_OLD = 0;
-
-            let i = 1;
-
-            while(ERROR > E){
-                
-            let FXL = equation(XL,Equation);
-            let FXR = equation(XR,Equation);
-             X1 = ((XL * FXR) - (XR * FXL)) / (FXR - FXL);
-             console.log(X1);
-            let FX1 = equation(X1,Equation);
-            
-            
-            if(FX1 * FXR >= 0) {
-            
-                XR = X1;
+           
+            this.setState({ arr: calFalse(this.state.Equation, this.state.XL, this.state.XR, this.state.E) })
             }
-            else{
-               
-                XL = X1;
-            
-            }
-
-            
-            ERROR = Math.abs((X1 - X1_OLD)/X1);
-            X1_OLD = X1;
-            arr.push(<div style = {{fontSize : '25px' ,display : 'flex'}}>
-            <span style = {{width : '40%' , textAlign : 'left'}}> Iteration {i} : X is {X1} </span>
-            <span > Error : {ERROR.toFixed(15)} </span>
-
-            </div>)
-            i++;   
-            }
-
-            arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}>RESULT OF X IS {X1} </div>)
-            this.setState({arr : arr});
-        
-        
-        }
         
         catch(error){
            
@@ -147,15 +96,15 @@ class False_position extends React.Component{
              False-Position Method
             </div>
             <div style = {{marginTop : '10px'}}>
-                <Input placeholder = 'ใส่สมการ'  onChange = {this.getEquation} />
+                <Input placeholder = 'ใส่สมการ'  value = {this.state.Equation} onChange = {this.getEquation} />
                 {this.state.status}
             
             </div>
             <div style = {{marginTop : '10px'}}>
                 
-                <span style = {{marginLeft : '10px'}}><Input placeholder = 'XL = 0.00' onChange = {this.getXL} style ={{width : '100px'}}/></span>
-                <span style = {{marginLeft : '10px'}}> <Input placeholder = 'XR = 0.00 ' onChange = {this.getXR} style = {{width : '100px'}}/></span>
-                <span style = {{marginLeft : '10px'}}> <Input placeholder = 'Error = 0.0000' onChange = {this.getE} style = {{width : '100px'}} /> </span>
+                <span style = {{marginLeft : '10px'}}><Input placeholder = 'XL = 0.00' value = {this.state.XL}  onChange = {this.getXL} style ={{width : '100px'}}/></span>
+                <span style = {{marginLeft : '10px'}}> <Input placeholder = 'XR = 0.00 ' value = {this.state.XR} onChange = {this.getXR} style = {{width : '100px'}}/></span>
+                <span style = {{marginLeft : '10px'}}> <Input placeholder = 'Error = 0.0000'value = {this.state.E} onChange = {this.getE} style = {{width : '100px'}} /> </span>
 
             </div>
             <div style = {{marginTop : '10px' ,marginLeft : '10px'}}>

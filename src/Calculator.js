@@ -114,13 +114,17 @@ export function calFalse(initialEquation ,initialXL,initialXR,initialError){
 
         oldX1 = x1
 
-        arr.push({key : i , iteration : i.toString() ,x1 : x1.toFixed(15).toString() ,error : checkError.toFixed(15).toString()})
-        console.log(i.toString())
-        console.log(x1.toString())
-        console.log(checkError.toString())
+        arr.push(<div style = {{fontSize : '25px' ,display : 'flex'}}>
+        <span style = {{width : '40%' , textAlign : 'left'}}> Iteration {i} : X is {X1} </span>
+        <span > Error : {ERROR.toFixed(15)} </span>
+
+        </div>)
+        
         i++
         
      }
+     arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}>RESULT OF X IS {X1} </div>)
+        this.setState({arr : arr});
      return arr
 }
 
