@@ -34,8 +34,7 @@ class One_point extends React.Component{
         index = parseInt(index[1])
         this.setState({
             Equation: this.state.apiData[index]["equation"],
-            X0: this.state.apiData[index]["xl"],
-            X1: this.state.apiData[index]["xr"],
+            X: this.state.apiData[index]["xl"],
             E: this.state.apiData[index]["error"],
             isModalVisible: false
         })
@@ -64,7 +63,7 @@ class One_point extends React.Component{
         
         try{
         
-            this.setState({ arr: calOnepoint(this.state.equation, this.state.x0, this.state.x1, this.state.error) })
+            this.setState({ arr: calOnepoint(this.state.Equation, this.state.X,this.state.E) })
          }
         catch(error){
             this.setState({status : <div style = {{color :  'red'}}> ใส่ฟังก์ชั่นไม่ถูกต้อง</div>});
@@ -90,12 +89,12 @@ class One_point extends React.Component{
             </div>
 
             <div style = {{marginTop : '10px'}}>
-                <Input placeholder = 'ใส่สมการ' onChange = {this.getEquation}/>
+                <Input placeholder = 'ใส่สมการ' value = {this.state.Equation} onChange = {this.getEquation}/>
                 {this.state.status}
             </div>
             <div style = {{marginTop : '10px'}}>
-                <span> <Input  placeholder = 'X=0.00' onChange = {this.getX} style = {{width : '100px'}}/>     </span>
-                <span> <Input  placeholder = 'Error=0.00000' onChange = {this.getE} style = {{width : '100px'}}/>     </span>
+                <span> <Input  placeholder = 'X=0.00' value = {this.state.X} onChange = {this.getX} style = {{width : '100px'}}/>     </span>
+                <span> <Input  placeholder = 'Error=0.00000' value = {this.state.E} onChange = {this.getE} style = {{width : '100px'}}/>     </span>
             </div>
             <div style = {{marginTop : '10px'}}>
             <span><Button type = 'primary' onClick = {this.cal_secant} >Calculate</Button></span>

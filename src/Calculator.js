@@ -200,6 +200,7 @@ export function calNewton(initialEquation, initialX, initialError) {
 
     let checkError = 9999
     let oldcheckError = 9999;
+    arr.push(<div style = {{textAlign : 'left' , fontSize : '25px'}}><span> f'(x) = {FFX}</span></div>)
     while (checkError > error) {
 
         let fXdiff = fXprime.evaluate({x : X})
@@ -218,13 +219,19 @@ export function calNewton(initialEquation, initialX, initialError) {
         oldX = X
 
 
-        arr.push({key : i, iteration: i.toString(), x: X.toFixed(15).toString(), error: checkError.toFixed(15).toString() })
-        console.log(i.toString())
-        console.log(X.toString())
-        console.log(checkError.toString())
+        
         i++
 
+        arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
+               <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {X}</span>
+               <span > Error : {Error.toFixed(15)}</span>
+               </div>);
+               console.log(i);
+               i++;
+
     }
+    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X}</div>);
+   
     return arr
 }
 export function calSecant(initialEquation, initialX0,initialX1, initialError) {
