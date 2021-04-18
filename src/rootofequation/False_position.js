@@ -76,9 +76,7 @@ class False_position extends React.Component{
         }
         
         try{
-
-           
-            this.setState({ arr: calFalse(this.state.Equation, this.state.XL, this.state.XR, this.state.E) })
+             this.setState({ arr: calFalse(this.state.Equation, this.state.XL, this.state.XR, this.state.E) })
             }
         
         catch(error){
@@ -108,9 +106,11 @@ class False_position extends React.Component{
 
             </div>
             <div style = {{marginTop : '10px' ,marginLeft : '10px'}}>
-                <Button type = 'primary' onClick = {this.cal_false}> Calculate </Button>
+            <span><Button type = 'primary' onClick = {this.cal_secant} >Calculate</Button></span>
+                <span style = {{padding : '0px 0px 0px 30px'}}><Button size='medium' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button></span>
+                {this.state.arr}
             </div>
-            {this.state.arr}
+           
 
             </div>
         );

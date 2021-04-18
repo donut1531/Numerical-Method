@@ -2,9 +2,9 @@ import React from 'react';
 import {Input , Button} from 'antd';
 import {Modal_roe} from '../components/Modal'
 import all_Api from '../API/index'
-const math = require('mathjs');
-import {calNewton} from '../Calculator'
 
+import {calNewton} from '../Calculator'
+const math = require('mathjs');
 class Newton_raphson extends React.Component{
 
     state = { 

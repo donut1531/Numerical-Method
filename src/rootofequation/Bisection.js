@@ -1,6 +1,9 @@
 import React from 'react';
 import {Input , Button} from 'antd';
-
+import all_Api from '../API/index'
+import {Modal_roe} from '../components/Modal.js'
+import {calFalse} from '../Calculator'
+const math = require('mathjs');
 
 class Bisection extends React.Component{
     state = {
@@ -18,7 +21,7 @@ class Bisection extends React.Component{
     };
     async getData(){
         let tempData = null
-        await apis.getRootofequation().then(res => { tempData = res.data })
+        await all_Api.get_Root_of_equation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
         this.setState({ hasData: true })
         // console.log(tempData)
@@ -68,57 +71,8 @@ class Bisection extends React.Component{
         }
 
         try {
-            
-            let Equation = this.state.Equation;
-            Equation = fixed_fx(Equation);
-             
-            let XL = parseFloat(this.state.XL);
-            let XR = parseFloat(this.state.XR);
-            let E = parseFloat(this.state.E);
-
-            let XM =(XL + XR)/2;
-            let num = equation(XM,Equation)*equation(XR,Equation);
-            
-            let ER = 999999;
-            let old_XM = XM;
-
-            let arr = [];
-            let i = 1;
-
-            if(num > 0){
-
-                XR = XM;
-            }
-            else if(num < 0){
-                XL = XM;
-            }
-
-            while(ER > E){
-                XM = (XL+XR)/2;
-                num = equation(XM,Equation)*equation(XR,Equation);
-
-                
-            if(num < 0){
-
-                XL = XM;
-            }
-            else {
-                XR = XM;
-            }
-
-            ER = Math.abs((XM-old_XM)/XM);
-
-            old_XM = XM;
-            arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-            <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {XM}</span>
-            <span > Error : {ER.toFixed(15)}</span>
-            </div>);
-            i++;
-            }
-            
-            arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {XM}</div>);
-            this.setState({ans:arr});
-        
+        this.setState({ arr: calFalse(this.state.Equation, this.state.XL, this.state.XR, this.state.E) })
+ 
         }
 
         
@@ -143,7 +97,7 @@ class Bisection extends React.Component{
              <div style = {{
                  marginTop : '10px'
              }}>
-              <Input placeholder = 'ใส่สมการ' onChange = {this.getEquation}/>
+              <Input placeholder = 'ใส่สมการ' value = {this.state.Equation} onChange = {this.getEquation}/>
                
               {this.state.status}
              </div>
@@ -151,21 +105,18 @@ class Bisection extends React.Component{
                  marginTop : '10px'
                  
              }}>
-                 <span style = {{marginLeft : '10px'}}><Input placeholder = 'XL = 0.0' onChange = {this.getXL}style = {{width : '100px'}} /></span>
-                 <span style = {{marginLeft : '10px'}}><Input placeholder = 'XR = 0.0' onChange = {this.getXR}style = {{width : '100px'}}/></span>
-                 <span style = {{marginLeft : '10px'}}><Input placeholder = 'Error = 0.000' onChange = {this.getE}style = {{width : '100px'}} /></span>
+                 <span style = {{marginLeft : '10px'}}><Input placeholder = 'XL = 0.0' value = {this.state.XL} onChange = {this.getXL}    style = {{width : '100px'}} /></span>
+                 <span style = {{marginLeft : '10px'}}><Input placeholder = 'XR = 0.0' value = {this.state.XR} onChange = {this.getXR}    style = {{width : '100px'}}/></span>
+                 <span style = {{marginLeft : '10px'}}><Input placeholder = 'Error = 0.000' value = {this.state.E} onChange = {this.getE} style = {{width : '100px'}} /></span>
              </div>
-             <div style = {{
-                 marginTop : '10px'
-                 ,marginLeft : '10px'
-             }}>
+             <div style = {{marginTop : '10px',marginLeft : '10px' }}>
                  
-                 <Button type = 'primary' onClick = {this.cal_bisection}> Calculate </Button>
+                 <span><Button type = 'primary' onClick = {this.cal_secant} >Calculate</Button></span>
+                <span style = {{padding : '0px 0px 0px 30px'}}><Button size='medium' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button></span>
+                {this.state.arr}
 
              </div>
-             <div>
-                 {this.state.ans}
-             </div>
+             
             </div>
         );
     }
