@@ -2,7 +2,7 @@ import React from 'react';
 import {Modal_roe} from '../components/Modal'
 import {Input , Button} from 'antd';
 import all_Api from '../API/index'
-
+import {calSecant} from '../Calculator'
 const math = require('mathjs');
 
 
@@ -12,6 +12,7 @@ const math = require('mathjs');
 class Secant extends React.Component{
 
     state = {
+        arr :[],
         Equation: '',
         X0: '',
         X1: '',
@@ -21,11 +22,7 @@ class Secant extends React.Component{
         apiData: [],
         hasData: false
     };
-    checkEquation (equation){
-        equation = equation.replaceAll('X','x')
     
-        return equation
-    }
     async getData() {
         let tempData = null
         await all_Api.get_Root_of_equation().then(res => { tempData = res.data })
@@ -74,68 +71,7 @@ class Secant extends React.Component{
         }
 
         try{
-
-            let equation = this.checkEquation(this.state.Equation)
-            equation = math.parse(equation).compile()
-            let xl = math.bignumber(this.state.X0)
-            let xr = math.bignumber(this.state.X1)
-            let error = math.bignumber(this.state.E)
-            
-
-            let arr = []
-
-
-            let xm = math.divide(math.add(xl, xr), 2)
-
-            let fx = math.multiply(equation.evaluate({ x: xm }), equation.evaluate({ x: xr }))
-            
-            if (fx < 0) {
-                xl = xm;
-            }
-            else {
-                xr = xm;
-            }
-
-            let checkError = 9999;
-
-            let oldXm = xm;
-
-            let i = 0;
-            while (checkError > error) {
-
-                xm = math.divide(math.add(xl, xr), 2)
-
-                fx = math.multiply(equation.evaluate({ x: xm }), equation.evaluate({ x: xr }))
-
-                if (fx < 0) {
-                    xl = xm;
-                }
-                else {
-                    xr = xm;
-                }
-                checkError = Math.abs((xm - oldXm) / xm);
-
-                oldXm = xm;
-
-      
-       
-            
-            arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-            <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {xm}</span>
-            <span > Error : {Error.toFixed(15)}</span>
-            </div>);
-            
-            i++;
-         }
-
-
-         arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {xm}</div>);
-            this.setState({arr:arr});
-
-            
-            
-            
-
+            this.setState({ arr: calSecant(this.state.equation, this.state.x0, this.state.x1, this.state.error) })
         }
         catch(error){
             this.setState({status : <div style = {{color :  'red'}}> ใส่ฟังก์ชั่นไม่ถูกต้อง</div>});

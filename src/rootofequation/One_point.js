@@ -1,10 +1,51 @@
 import React from 'react';
 import {Input , Button } from 'antd';
+import {Modal_roe} from '../components/Modal'
+import all_Api from '../API/index'
+import {calOnepoint} from '../Calculator'
+
+const math = require('mathjs');
 
 class One_point extends React.Component{
 
-    state = { Equation : '' , X : '' , E : '' , status : null};
-
+    state = { 
+        arr : [],
+        Equation : '' ,
+        X : '' ,
+        E : '' ,
+        status : null,
+        isModalVisible: false,
+        apiData: [],
+        hasData: false
+        };
+    
+    async getData() {
+        let tempData = null
+        await all_Api.get_Root_of_equation().then(res => { tempData = res.data })
+        this.setState({ apiData: tempData })
+        this.setState({ hasData: true })
+        // console.log(tempData)
+    }
+    onClickOk = e => {
+        this.setState({ isModalVisible: false })
+    }
+    onClickInsert = e => {
+        let index = e.currentTarget.getAttribute('name').split('_')
+        index = parseInt(index[1])
+        this.setState({
+            Equation: this.state.apiData[index]["equation"],
+            X0: this.state.apiData[index]["xl"],
+            X1: this.state.apiData[index]["xr"],
+            E: this.state.apiData[index]["error"],
+            isModalVisible: false
+        })
+    }
+    onClickExample = e => {
+        if (!this.state.hasData) {
+            this.getData()
+        }
+        this.setState({ isModalVisible: true })
+    }
     getEquation = (Event) => {
         this.setState({Equation : Event.target.value})
     }
@@ -22,51 +63,27 @@ class One_point extends React.Component{
         }
         
         try{
-         let Equation = this.state.Equation;
-         Equation = fixed_fx(Equation);
-         equation(2,Equation); // debug   
-       
-         let E = parseFloat(this.state.E);
-         let X = parseFloat(this.state.X);
-         
-
-         let Error = 999999 ;
-         let i = 0;
-         let arr = [];
-         let old_X = 0;
-
-         while(Error > E){
-          
-
-            X = equation(X,Equation);
-            
-            Error = Math.abs((X - old_X)/X);
-
-            old_X = X;
-
-            arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-            <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {X}</span>
-            <span > Error : {Error.toFixed(15)}</span>
-            </div>);
-            console.log(i);
-            i++;
-            
-            
-        }
-        arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X}</div>);
-            this.setState({arr:arr});
-        }
+        
+            this.setState({ arr: calOnepoint(this.state.equation, this.state.x0, this.state.x1, this.state.error) })
+         }
         catch(error){
             this.setState({status : <div style = {{color :  'red'}}> ใส่ฟังก์ชั่นไม่ถูกต้อง</div>});
         }
     }
+
     render(){
       
         
 
         return(
             <div>
-
+                 <Modal_roe
+                    visible={this.state.isModalVisible}
+                    onOK={this.onClickOk}
+                    hasData={this.state.hasData}
+                    apiData = {this.state.apiData}
+                    onClick={this.onClickInsert}
+                /> 
             
             <div>
              One-Point Iteration Method
@@ -81,9 +98,13 @@ class One_point extends React.Component{
                 <span> <Input  placeholder = 'Error=0.00000' onChange = {this.getE} style = {{width : '100px'}}/>     </span>
             </div>
             <div style = {{marginTop : '10px'}}>
-                <Button type = 'primary' onClick = {this.cal_onepoint} >Calculate</Button>
+            <span><Button type = 'primary' onClick = {this.cal_secant} >Calculate</Button></span>
+                <span style = {{padding : '0px 0px 0px 30px'}}>
+                    <Button size='medium' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button>
+                    </span>
+                    {this.state.arr}
             </div>
-            {this.state.arr}
+            
             </div>
         );
     }
