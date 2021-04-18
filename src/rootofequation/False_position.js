@@ -88,7 +88,13 @@ class False_position extends React.Component{
     
         return(
             <div>
-            
+               <Modal_roe
+                    visible={this.state.isModalVisible}
+                    onOK={this.onClickOk}
+                    hasData={this.state.hasData}
+                    apiData = {this.state.apiData}
+                    onClick={this.onClickInsert}
+                /> 
             
             <div>
              False-Position Method
