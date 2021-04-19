@@ -8,13 +8,17 @@ import False_position from  './rootofequation/False_position'
 import One_point  from  './rootofequation/One_point'
 import Newton_raphson from  './rootofequation/Newton_raphson'
 import Secant from  './rootofequation/Secant'
-import Guass_elimation from  './Matrix/Guass_elimation'
-import Lu_decomposition from './Matrix/Lu_decomposition'
-import Guass_jordan from  './Matrix/Guass_jordan'
-import Guass_seidel from  './Matrix/Guass_seidel'
-import Conjugate_gradient from  './Matrix/Conjugate_gradient'
-import Jacobi from  './Matrix/Jacobi'
-import Cramer from  './Matrix/Cramer'
+import Guass_elimation from  './Linear_Algebric_Equation/Guass_elimation'
+import Lu_decomposition from './Linear_Algebric_Equation/Lu_decomposition'
+import Guass_jordan from  './Linear_Algebric_Equation/Guass_jordan'
+import Guass_seidel from  './Linear_Algebric_Equation/Guass_seidel'
+import Conjugate_gradient from  './Linear_Algebric_Equation/Conjugate_gradient'
+import Jacobi from  './Linear_Algebric_Equation/Jacobi'
+import Cramer from  './Linear_Algebric_Equation/Cramer'
+import Newton from './Interpolation/Newton_interpolation'
+import Lagrange from './Interpolation/Lagrange'
+import Spline from './Interpolation/Spline'
+
 
 const { SubMenu } = Menu;
 
@@ -64,6 +68,13 @@ class App extends React.Component{
             <Menu.Item key="12">Conjugate Gradient Method<Link to = '/conjugate-gradient' /></Menu.Item>
             
           </SubMenu>
+          <SubMenu key="sub-" title="Interpolation">
+            <Menu.Item key="13">Newton's divided-differences<Link to = '/newton' /></Menu.Item>
+            <Menu.Item key="14">Lagrange polynomials<Link to = '/lagrange' /></Menu.Item>
+            <Menu.Item key="15">Spline interpolation<Link to = '/spline' /></Menu.Item>
+          
+            
+          </SubMenu>
         </Menu>
       </Sider>
       <Layout style={{ padding: '0 24px 24px' }}>
@@ -93,6 +104,10 @@ class App extends React.Component{
          <Route path = '/guass-seidel' component = {Guass_seidel} />
          <Route path = '/guass-jordan' component = {Guass_jordan} />
          <Route path = '/conjugate-gradient' component = {Conjugate_gradient} />
+         { /* Interpolation */}
+         <Route path = '/newton' component = {Newton} />
+         <Route path = '/lagrange' component = {Lagrange} />
+         <Route path = '/spline' component = {Spline} />
         
            
         </Content>

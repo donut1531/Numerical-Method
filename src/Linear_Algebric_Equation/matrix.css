@@ -1,14 +1,16 @@
 .borderAddmatrix{
     margin: 20px  ;
-    
+   
 }
 .buttonAddmatrix{
     padding: 0 20px;
+   
 }
 .blackground_row_matrix{
     padding: 0 40px;
     background-color: rgb(213, 236, 236);
-    
+    text-align: left;
+   
 }
 .colInput{
     padding: 5px 5px 5px 0px;

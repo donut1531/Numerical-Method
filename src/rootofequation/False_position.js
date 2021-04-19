@@ -3,7 +3,7 @@ import {Input , Button} from 'antd';
 
 import all_Api from '../API/index'
 import {Modal_roe} from '../components/Modal.js'
-import {calFalse} from '../Calculator'
+import {calFalse} from '../calculator'
 const math = require('mathjs');
 
 class False_position extends React.Component{

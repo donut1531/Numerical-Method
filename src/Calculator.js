@@ -814,14 +814,17 @@ return arr
 }
 
 export function calNewtonInterpolation( initialMatrix1, initialPoint,initialX) {
+
+    
+
     let A = initialMatrix1
 
-    let P = initialPoint
+    let P = [...initialPoint]
    
     let X = initialX
 
     
-
+    
     let arr = []
     let ans = []
 
@@ -835,8 +838,8 @@ export function calNewtonInterpolation( initialMatrix1, initialPoint,initialX) {
 
    
 
-    ans.push({key :  1 ,fx : 'f('+X+')' , valuex : findX(X).toFixed(5) })
-
+   ans.push(<div> f({X})  =  {findX(X).toFixed(7)} </div>)
+   
    return ans
 }
 
@@ -905,7 +908,7 @@ export function calLagrange(initialMatrix1,initialPoint,initialX){
 			b += a * ys[j];
 			c += a;
 		} else {
-            ans.push({key :  1 ,fx : 'f('+X+')' , valuex : ys[j] })
+            ans.push(<div> f({X})   {ys[j]} </div> )
 			return ans;
             
 			
@@ -914,7 +917,7 @@ export function calLagrange(initialMatrix1,initialPoint,initialX){
 	
 
 
-    ans.push({key :  1 ,fx : 'f('+X+')' , valuex : (b/c).toFixed(5) })
+    ans.push(<div>'f('{X}')' = {(b/c).toFixed(7)} </div>)
 	
 
     return ans
@@ -923,10 +926,11 @@ export function calLagrange(initialMatrix1,initialPoint,initialX){
 
 export function calSpline(initialMatrix1,initialX){
     
+    initialMatrix1 = parseInt2D(initialMatrix1)
 
-    let arr = initialMatrix1
+    let arr = copyArray(initialMatrix1)
 
-   
+    
    
     let X = initialX
 
@@ -959,7 +963,8 @@ export function calSpline(initialMatrix1,initialX){
     const spline = new Spline(xs,ys)
     
 
-    ans.push({key :  1 ,fx : 'f('+X+')' , valuex : spline.at(X) })
+    ans.push(<div>'f('{X}')' = {spline.at(X).toFixed(7)} </div>)
+   
 	
 
     return ans

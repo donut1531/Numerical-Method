@@ -3,7 +3,7 @@ import {Input , Button} from 'antd';
 import {Modal_roe} from '../components/Modal'
 import all_Api from '../API/index'
 
-import {calNewton} from '../Calculator'
+import {calNewton} from '../calculator'
 const math = require('mathjs');
 class Newton_raphson extends React.Component{
 

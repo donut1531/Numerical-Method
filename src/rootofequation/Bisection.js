@@ -2,7 +2,7 @@ import React from 'react';
 import {Input , Button} from 'antd';
 import all_Api from '../API/index'
 import {Modal_roe} from '../components/Modal.js'
-import {calBisection} from '../Calculator'
+import {calBisection} from '../calculator'
 const math = require('mathjs');
 
 class Bisection extends React.Component{
