@@ -8,11 +8,30 @@ function checkEquation (equation){
 
     return equation
 }
-export function copyArray(n,matrix1){
+export function parseInt2D (n,matrix){
+    let arr = []
+    for(let i = 0;i < n ; i++){
+        arr.push([])
+       for(let j = 0 ; j < n ; j++){
+           arr[i][j]  = (parseInt(matrix[i][j]))
+       }
+    }
+    return arr;
+}
+export function parseInt1D (n,matrix){
+    let arr = []
+    for(let i = 0;i < n ; i++){
+       
+           arr[i] =parseInt(matrix[i])
+       
+    }
+    return arr;
+}
+export function copyArray(n,matrix){
    let arr = []
     for(let i = 0;i < n ; i++){
         arr.push([])
-        arr[i] = [].concat(matrix1[i])
+        arr[i] = [].concat(matrix[i])
     }
     return arr;
 
@@ -308,12 +327,16 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
 
 export function calCramer(n, initialMatrix1, initialMatrix2) {
 
+     
+   
     let matrix1=math.bignumber(initialMatrix1)
+    
     let matrix2=math.bignumber(initialMatrix2)
     let det_matrixA = math.det(matrix1)
     
     let temp_matrix1 = copyArray(n,matrix1)
-
+    console.log(matrix1)
+    console.log(matrix2)
     let arr = []
 
     let X = [];
@@ -326,12 +349,14 @@ export function calCramer(n, initialMatrix1, initialMatrix2) {
             for (let j = 0; j < n; j++) { 
                 temp_matrix1[j][i] = matrix2[j]  
             }
-            X[i] = math.divide(math.det(temp_matrix1) , det_matrixA).toFixed(15).toString()
-            
-            arr.push({key : i , x : 'X'+(i+1) ,valuex : X[i]})
+            X[i] = math.divide(math.det(temp_matrix1) , det_matrixA)
+            console.log(X[i].toString())
+            arr.push(<div> X{(i+1)} is {X[i].toFixed(9).toString()} </div> )
             
             temp_matrix1 = copyArray(n,matrix1);
         }
+
+      
         
     return arr
 }
@@ -340,10 +365,13 @@ export function calCramer(n, initialMatrix1, initialMatrix2) {
 
 export function calElimination(n, initialMatrix1, initialMatrix2) {
 
-    let matrix1=copyArray(n,initialMatrix1)  
-    let matrix2=copyArray(n,initialMatrix2)  
-    
-    
+    initialMatrix1 = parseInt2D(n,initialMatrix1)
+    initialMatrix2 = parseInt1D(n,initialMatrix2)
+    let matrix1=copyArray(n,initialMatrix1)
+    let matrix2=copyArray(n,initialMatrix2)
+
+    console.log(matrix1)
+    console.log(matrix2)
     
     let arr = []
     let X = []
@@ -352,7 +380,7 @@ export function calElimination(n, initialMatrix1, initialMatrix2) {
         matrix1[i].push(matrix2[i]) 
         X.push(1)
     }
-    console.log(matrix1)
+    
    
     for(let i = 1;i < n ; i++){
         for(let j = i ;j < n ; j++){
@@ -378,7 +406,7 @@ export function calElimination(n, initialMatrix1, initialMatrix2) {
     X[i] = ((matrix1[i][n] - sum)/matrix1[i][i])
        
     }
-    X.map((x,i) => arr.push({key : i , x : 'X'+(i+1) , valuex : x.toFixed(5)}))
+    X.map((x,i) => arr.push(<div> X{(i+1)} is {x.toFixed(9).toString()} </div>))
     
         
     return arr
@@ -387,6 +415,8 @@ export function calElimination(n, initialMatrix1, initialMatrix2) {
 
 export function calJordan(n, initialMatrix1, initialMatrix2) {
 
+    initialMatrix1 = parseInt2D(n,initialMatrix1)
+    initialMatrix2 = parseInt1D(n,initialMatrix2)
     let matrix1=copyArray(n,initialMatrix1)  
     let matrix2=copyArray(n,initialMatrix2) 
     
@@ -437,7 +467,7 @@ export function calJordan(n, initialMatrix1, initialMatrix2) {
       
         
     
-    X.map((x,i) => arr.push({key : i , x : 'X'+(i+1) , valuex : x.toFixed(5)}))
+    X.map((x,i) => arr.push(<div> X{(i+1)} is {x.toFixed(9).toString()} </div>))
 
         
     return arr

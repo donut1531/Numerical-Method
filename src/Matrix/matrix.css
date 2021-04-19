@@ -1,0 +1,24 @@
+.borderAddmatrix{
+    margin: 20px  ;
+    
+}
+.buttonAddmatrix{
+    padding: 0 20px;
+}
+.blackground_row_matrix{
+    padding: 0 40px;
+    background-color: rgb(213, 236, 236);
+    
+}
+.colInput{
+    padding: 5px 5px 5px 0px;
+    
+}
+.titlematrix{
+    padding : 0 40px;
+    text-align: left;
+    
+}
+.showdata{
+    margin-top: 40px;
+}
