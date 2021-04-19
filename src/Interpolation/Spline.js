@@ -55,9 +55,9 @@ class Spline extends React.Component{
     onChangematrixXY = (e) =>{
         let index = e.target.name.split(" ")
         let value = e.target.value
-        let arr = this.state.matrixA
+        let arr = this.state.A
         arr[parseInt(index[0])][parseInt(index[1])] = value
-        this.setState({matrixA : arr})
+        this.setState({A : arr})
        
     
     }
