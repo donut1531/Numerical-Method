@@ -27,6 +27,17 @@ export function parseInt1D (n,matrix){
     }
     return arr;
 }
+export function parseFloat2D (n,matrix){
+    let arr = []
+    for(let i = 0;i < n ; i++){
+        arr.push([])
+       for(let j = 0 ; j < n ; j++){
+           arr[i][j]  = (parseFloat(matrix[i][j]))
+       }
+    }
+    return arr;
+}
+
 export function copyArray(n,matrix){
    let arr = []
     for(let i = 0;i < n ; i++){
@@ -925,11 +936,11 @@ export function calLagrange(initialMatrix1,initialPoint,initialX){
 }
 
 export function calSpline(initialMatrix1,initialX){
-    
-    initialMatrix1 = parseInt2D(initialMatrix1.length,initialMatrix1)
-
     let arr = copyArray(initialMatrix1.length,initialMatrix1)
+    
+    arr = parseFloat2D(arr.length,arr)
 
+   
     
    
     let X = initialX
@@ -974,7 +985,9 @@ export function calSpline(initialMatrix1,initialX){
 
 export function calLinear(initialMatrix1,initialX){
     
-    let arr = initialMatrix1
+    let arr = copyArray(initialMatrix1.length,initialMatrix1)
+
+    arr = parseFloat2D(arr.length,arr)
   
     // let arr =  [[10, 5],[15, 9],[20, 15],
     //  [30, 18], 
@@ -994,8 +1007,8 @@ export function calLinear(initialMatrix1,initialX){
      console.log(gradient)
      console.log(yIntercept)
     let ans = []
-    ans.push({key :  1 ,fx : 'f('+X+')' , valuex : (yIntercept + (gradient*X)).toFixed(5) })
-	
+    
+	ans.push(<div>f({X}) = { (yIntercept + (gradient*X)).toFixed(5)} </div>)
 
     return ans
 
@@ -1003,8 +1016,11 @@ export function calLinear(initialMatrix1,initialX){
 
 
 export function calPoly(initialMatrix1,initialX){
+
     
-    let arr = initialMatrix1
+    let arr = copyArray(initialMatrix1.length,initialMatrix1)
+
+    arr = parseFloat2D(arr.length,arr)
   
     
    
@@ -1019,9 +1035,9 @@ export function calPoly(initialMatrix1,initialX){
 
     let ans = [] 
     let fx = a0+(a1*X)+(a2*(X*X))
-    ans.push({key :  1 ,fx : 'f('+X+')' , valuex : fx.toFixed(5) })
+    
 	
-
+    ans.push(<div>f({X}) = { fx.toFixed(7)} </div>)
     return ans
 
 }
@@ -1032,8 +1048,10 @@ export function calMultiple(initialN,initialMatrix1,initialX1,initialX2,initialX
     let X1 = initialX1
     let X2 = initialX2
     let X3 = initialX3
+  
     // let A = [[1,0,1,4],[0,1,3,-5],[2,4,1,-6],[3,2,2,0],[4,1,5,-1],[2,3,3,-7],[1,6,4,-20]]
-    let A = initialMatrix1
+    let A = copyArray(initialMatrix1)
+    A = parseFloat2D(A.length,A)
       let x1 = []
       let x2 = []
       let x3 = []
@@ -1193,8 +1211,8 @@ export function calMultiple(initialN,initialMatrix1,initialX1,initialX2,initialX
 
     let fX = X[0] + X[1]*X1+X[2]*X2+X[3]*X3
 
-    arr.push({key :  1 ,fx : 'Y' , valuex : fX.toFixed(5) })
-    
+   
+    arr.push(<div> Y = { fX.toFixed(7)} </div>)
     return arr
 
 

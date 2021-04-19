@@ -18,6 +18,9 @@ import Cramer from  './Linear_Algebric_Equation/Cramer'
 import Newton from './Interpolation/Newton_interpolation'
 import Lagrange from './Interpolation/Lagrange'
 import Spline from './Interpolation/Spline'
+import Linear_regression from './Regression/Linear_regression'
+import Polynomial_regression from './Regression/Polynomial_regression'
+import Multi_Linear from './Regression/Multi_linear_regreesion'
 
 
 const { SubMenu } = Menu;
@@ -76,13 +79,13 @@ class App extends React.Component{
           
             
           </SubMenu>
-          {/* <SubMenu key="sub4" title="Regression">
-            <Menu.Item key="16">Newton's divided-differences<Link to = '/newton' /></Menu.Item>
-            <Menu.Item key="17">Lagrange polynomials<Link to = '/lagrange' /></Menu.Item>
-            <Menu.Item key="18">Spline interpolation<Link to = '/spline' /></Menu.Item>
+          <SubMenu key="sub4" title="Regression">
+            <Menu.Item key="16">Linear Regression<Link to = '/linear-regression' /></Menu.Item>
+            <Menu.Item key="17">Polynomial_regression<Link to = '/Polynomial-regression' /></Menu.Item>
+            <Menu.Item key="18">Multiple Linear Regression<Link to = '/multiple-regression' /></Menu.Item>
           
             
-          </SubMenu> */}
+          </SubMenu>
         </Menu>
       </Sider>
       <Layout style={{ padding: '0 24px 24px' }}>
@@ -116,6 +119,11 @@ class App extends React.Component{
          <Route path = '/newton' component = {Newton} />
          <Route path = '/lagrange' component = {Lagrange} />
          <Route path = '/spline' component = {Spline} />
+         { /* Regression */}
+         <Route path = '/linear-regression' component = {Linear_regression} />
+         <Route path = '/Polynomial-regression' component = {Polynomial_regression} />
+         <Route path = '/multiple-regression' component = {Multi_Linear} />
+        
         
            
         </Content>
