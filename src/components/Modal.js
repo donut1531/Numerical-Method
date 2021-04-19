@@ -28,7 +28,7 @@ import { Button ,Modal} from 'antd'
                                     <Col span={12}>
                                         <Button name = {'insert_'+i} type='primary' onClick={this.props.onClick}>Insert</Button>
                                     </Col>
-                                    <hr/>
+                                    
                                
                             </Row>
                         ))
@@ -60,13 +60,12 @@ class Modal_matrix extends React.Component{
                    {this.props.hasData ?
                         
                         this.props.apiData.map((x,i) =>(
-                            <Row>
-                                    <Col span={12}>โจทย์ {x['id']+1}</Col>
+                            <Row >
+                                    <Col span={12} >โจทย์ {x['id']+1}</Col>
                                     <Col span={12}>
-                                        <Button name = {'insert_'+i} type='primary'  onClick={this.props.onClick}>Insert</Button>
+                                        <Button style ={{marginBottom : '10px'}} name = {'insert_'+i} type='primary'  onClick={this.props.onClick}>Insert</Button>
                                     </Col>
-                                    <hr/>
-
+                                   
                             </Row>
                         ))
                         : <span style={{fontSize:"25px", textAlign:"center"}}>กำลังโหลดข้อมูล</span>}

@@ -859,7 +859,7 @@ export function calLagrange(initialMatrix1,initialPoint,initialX){
 
    
    for(let i = 0 ; i < P.length ; i++){
-           arr.push(A[parseInt(P[i])-1])
+           arr.push(A[parseFloat(P[i])-1])
    }
    console.log(arr)
 
@@ -917,7 +917,7 @@ export function calLagrange(initialMatrix1,initialPoint,initialX){
 	
 
 
-    ans.push(<div>'f('{X}')' = {(b/c).toFixed(7)} </div>)
+    ans.push(<div>f({X}) = {(b/c).toFixed(7)} </div>)
 	
 
     return ans
@@ -926,9 +926,9 @@ export function calLagrange(initialMatrix1,initialPoint,initialX){
 
 export function calSpline(initialMatrix1,initialX){
     
-    initialMatrix1 = parseInt2D(initialMatrix1)
+    
 
-    let arr = copyArray(initialMatrix1)
+    let arr = initialMatrix1
 
     
    
@@ -963,7 +963,7 @@ export function calSpline(initialMatrix1,initialX){
     const spline = new Spline(xs,ys)
     
 
-    ans.push(<div>'f('{X}')' = {spline.at(X).toFixed(7)} </div>)
+    ans.push(<div>f({X}) = {spline.at(X).toFixed(7)} </div>)
    
 	
 

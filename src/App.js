@@ -34,17 +34,18 @@ class App extends React.Component{
       <div className="App">
       <HashRouter>
 
-      
+     
       <Layout>
         <Header className="header">
           
           <div className="logo" />
           
-          
+            <div style = {{color : 'white',fontSize : '42px'}} >Numerical Method</div>
         </Header>
       <Layout style = {{minHeight:'100vh'}}>
       <Sider width={200} className="site-layout-background">
         <Menu
+       
           mode="inline"
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
@@ -68,13 +69,20 @@ class App extends React.Component{
             <Menu.Item key="12">Conjugate Gradient Method<Link to = '/conjugate-gradient' /></Menu.Item>
             
           </SubMenu>
-          <SubMenu key="sub-" title="Interpolation">
+          <SubMenu key="sub3" title="Interpolation">
             <Menu.Item key="13">Newton's divided-differences<Link to = '/newton' /></Menu.Item>
             <Menu.Item key="14">Lagrange polynomials<Link to = '/lagrange' /></Menu.Item>
             <Menu.Item key="15">Spline interpolation<Link to = '/spline' /></Menu.Item>
           
             
           </SubMenu>
+          {/* <SubMenu key="sub4" title="Regression">
+            <Menu.Item key="16">Newton's divided-differences<Link to = '/newton' /></Menu.Item>
+            <Menu.Item key="17">Lagrange polynomials<Link to = '/lagrange' /></Menu.Item>
+            <Menu.Item key="18">Spline interpolation<Link to = '/spline' /></Menu.Item>
+          
+            
+          </SubMenu> */}
         </Menu>
       </Sider>
       <Layout style={{ padding: '0 24px 24px' }}>
