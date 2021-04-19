@@ -102,7 +102,7 @@ class Guass_elimation extends React.Component{
                 />
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
-                        Guass Elimination
+                        Guass Elimination Method
                          </Col>
                     <Row className='borderaddmatrix'>
                         <Col className='buttonaddmatrix'>
@@ -124,7 +124,7 @@ class Guass_elimation extends React.Component{
                     <Col span={14}><InputB n={this.state.n} value = {this.state.B} onChange={this.onChangematrixB} /> </Col>
                 </Row>
                 <Row className='blackground_row_matrix'>
-                    <Col >
+                    <Col style = {{marginBottom : '10px'}}>
                     <Button size='medium'  style = {{backgroundColor : 'aqua' , border : '2px solid black'   }} onClick={this.onClickCalculator}>คำนวณ</Button>
                     </Col>
                    

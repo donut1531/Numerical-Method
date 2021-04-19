@@ -475,6 +475,8 @@ export function calJordan(n, initialMatrix1, initialMatrix2) {
 
 export function calLu(n, initialMatrix1, initialMatrix2) {
 
+    initialMatrix1 = parseInt2D(n,initialMatrix1)
+    initialMatrix2 = parseInt1D(n,initialMatrix2)
     let A = copyArray(n,initialMatrix1) 
     let B = copyArray(n,initialMatrix2) 
 
@@ -560,7 +562,7 @@ export function calLu(n, initialMatrix1, initialMatrix2) {
     }
     
   
-    X.map((x, i) => arr.push({ key: i, x: 'X' + (i + 1), valuex: x.toFixed(5) }))
+    X.map((x, i) => arr.push(<div> X{(i+1)} is {x.toFixed(9).toString()} </div>))
 
 
 
@@ -575,6 +577,8 @@ export function calLu(n, initialMatrix1, initialMatrix2) {
 export function calJacobi(n, initialMatrix1, initialMatrix2,initialError) {
 
     let check = true;
+    initialMatrix1 = parseInt2D(n,initialMatrix1)
+    initialMatrix2 = parseInt1D(n,initialMatrix2)
     let matrix1=copyArray(n,initialMatrix1)
     let matrix2=copyArray(n,initialMatrix2)
     
@@ -637,7 +641,7 @@ export function calJacobi(n, initialMatrix1, initialMatrix2,initialError) {
     
     }
     for(let i = 0 ; i < n ; i++){
-        arr.push({key : i , x : 'X'+(i+1) , valuex : resultX[i].toFixed(5)})
+        arr.push(<div> X{(i+1)} is {resultX[i].toFixed(9).toString()} </div>)
     }
      
 
@@ -648,6 +652,8 @@ export function calJacobi(n, initialMatrix1, initialMatrix2,initialError) {
 export function calSeidel(n, initialMatrix1, initialMatrix2,initialError) {
 
     let check = true;
+    initialMatrix1 = parseInt2D(n,initialMatrix1)
+    initialMatrix2 = parseInt1D(n,initialMatrix2)
     let matrix1=copyArray(n,initialMatrix1)
     let matrix2=copyArray(n,initialMatrix2)
     
@@ -710,7 +716,7 @@ export function calSeidel(n, initialMatrix1, initialMatrix2,initialError) {
     
     }
     for(let i = 0 ; i < n ; i++){
-        arr.push({key : i , x : 'X'+(i+1) , valuex : resultX[i].toFixed(5)})
+        arr.push(<div> X{(i+1)} is {resultX[i].toFixed(9).toString()} </div>)
     }
      
 
@@ -721,6 +727,8 @@ export function calSeidel(n, initialMatrix1, initialMatrix2,initialError) {
 
 export function calConjugate(n, initialMatrix1, initialMatrix2,initialError) {
 
+    initialMatrix1 = parseInt2D(n,initialMatrix1)
+    initialMatrix2 = parseInt1D(n,initialMatrix2)
     let A = copyArray(n,initialMatrix1)
 
     let B = [...initialMatrix2]
@@ -799,7 +807,7 @@ export function calConjugate(n, initialMatrix1, initialMatrix2,initialError) {
 }
    
 for(let i = 0 ; i < n ; i++){
-    arr.push({key : i , x : 'X'+(i+1) , valuex : X[i].toFixed(5)})
+    arr.push(<div> X{(i+1)} is {X[i].toFixed(9).toString()} </div>)
 }
  
 return arr

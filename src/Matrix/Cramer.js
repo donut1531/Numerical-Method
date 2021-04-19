@@ -130,7 +130,7 @@ class Cramer extends React.Component{
                     <Col span={14}><InputB n={this.state.n} value = {this.state.B} onChange={this.onChangematrixB} /> </Col>
                 </Row>
                 <Row className='blackground_row_matrix'>
-                    <Col >
+                    <Col style = {{marginBottom : '10px'}}>
                     <Button size='medium'  style = {{backgroundColor : 'aqua' , border : '2px solid black'   }} onClick={this.onClickCalculator}>คำนวณ</Button>
                     </Col>
                    
