@@ -96,7 +96,7 @@ export default class Polynomial_regression extends React.Component{
                 />
                 <Row style ={{marginBottom : '10px  '}}>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
-                            Linear Regression
+                            Polynomial Regression
                          </Col>
                     <Row className='borderaddmatrix'>
                         <Col className='buttonaddmatrix'>

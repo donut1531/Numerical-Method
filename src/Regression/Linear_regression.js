@@ -139,7 +139,7 @@ export default class Linear_regression extends React.Component{
                     </Col>
                 </Row>
             </div>
-        )
+        )   
     }
 }
 

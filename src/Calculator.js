@@ -1029,12 +1029,12 @@ export function calPoly(initialMatrix1,initialX){
     const a0 = parseFloat(result.equation[0]);
     const a1 = parseFloat(result.equation[1]);
     const a2 = parseFloat(result.equation[2]);
-    console.log(a0)
-    console.log(a1)
     console.log(a2)
+    console.log(a1)
+    console.log(a0)
 
     let ans = [] 
-    let fx = a0+(a1*X)+(a2*(X*X))
+    let fx = a2+(a1*X)+(a0*(X*X))
     
 	
     ans.push(<div>f({X}) = { fx.toFixed(7)} </div>)
@@ -1050,7 +1050,8 @@ export function calMultiple(initialN,initialMatrix1,initialX1,initialX2,initialX
     let X3 = initialX3
   
     // let A = [[1,0,1,4],[0,1,3,-5],[2,4,1,-6],[3,2,2,0],[4,1,5,-1],[2,3,3,-7],[1,6,4,-20]]
-    let A = copyArray(initialMatrix1)
+    let A = copyArray(initialMatrix1.length,initialMatrix1)
+    // let A = initialMatrix1
     A = parseFloat2D(A.length,A)
       let x1 = []
       let x2 = []
