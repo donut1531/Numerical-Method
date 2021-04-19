@@ -102,7 +102,7 @@ class Jacobi extends React.Component{
                 />
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
-                        Lu Decompostion Method
+                         Jacobi Iteration Method
                          </Col>
                     <Row className='borderaddmatrix'>
                         <Col className='buttonaddmatrix'>
