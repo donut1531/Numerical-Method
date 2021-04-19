@@ -1,7 +1,7 @@
 import React from 'react';
 import {Input, Row, Col , Button  } from 'antd'
 import all_Api from '../API/index'
-import {InputMultiple}  from '../components/Create_matrix'
+import {InputXY}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import '../Linear_Algebric_Equation/matrix.css'
 import { calLinear ,copyArray } from '../calculator'
@@ -9,7 +9,7 @@ import { calLinear ,copyArray } from '../calculator'
 
 export default class Linear_regression extends React.Component{
 
-    tate = {
+    state = {
         n: 2,
         A: [[],[]],
       
@@ -92,9 +92,9 @@ export default class Linear_regression extends React.Component{
                     visible={this.state.isModalVisible}
                     onOK={this.onClickOk}
                     hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
+                    apiData={this.state.apiData}
                     onClick={this.onClickInsert}
-                    />
+                />
                 <Row style ={{marginBottom : '10px  '}}>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                             Linear Regression
@@ -114,7 +114,7 @@ export default class Linear_regression extends React.Component{
                 <Row className='blackground_row_matrix'>
                     <Col span={24}> กรุณาใส่ค่า XY </Col>
                     <Col span={24}> 
-                        <InputMultiple n={this.state.n} value={this.state.A} onChange={this.onChangematrixXY} />
+                        <InputXY n={this.state.n} value={this.state.A} onChange={this.onChangematrixXY} />
                     </Col>
                     <Col span = {24}>กรุณากรอกค่า X </Col>
                     <Col span={24}>
