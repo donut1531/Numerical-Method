@@ -1,6 +1,6 @@
 import './App.css';
 import Bisection from './rootofequation/Bisection';
-import { Route, HashRouter,Link } from "react-router-dom";
+import { Route, HashRouter,Link,Redirect } from "react-router-dom";
 import React from 'react';
 import { Layout, Typography, Menu, Breadcrumb} from 'antd';
 
@@ -21,6 +21,7 @@ import Spline from './Interpolation/Spline'
 import Linear_regression from './Regression/Linear_regression'
 import Polynomial_regression from './Regression/Polynomial_regression'
 import Multi_Linear from './Regression/Multi_linear_regreesion'
+import Swagger from './Swagger'
 
 
 const { SubMenu } = Menu;
@@ -101,7 +102,7 @@ class App extends React.Component{
           }}
         >
          { /* Root of Equation  */}
-         <Route exact path = '/'component = {Bisection}/>
+         <Route exact path = '/'> <Redirect to = '/bisection'/> </Route>
          <Route path = '/bisection'component = {Bisection}/>
          <Route path = '/false-position' component = {False_position} />
          <Route path = '/one-point' component = {One_point} />
@@ -123,7 +124,8 @@ class App extends React.Component{
          <Route path = '/linear-regression' component = {Linear_regression} />
          <Route path = '/Polynomial-regression' component = {Polynomial_regression} />
          <Route path = '/multiple-regression' component = {Multi_Linear} />
-        
+         { /* Swagger */}
+         <Route path = '/swagger' component = {Swagger} />
         
            
         </Content>
