@@ -167,6 +167,60 @@ const config = {
                 }
             }
         }
+        ,
+        "/regression": {
+            "get": {
+                "tags": [
+                    "API"
+                ]
+                ,
+                "summary": "ค้นหาโจทย์ทั้งหมดในเรื่อง regression"
+                ,
+                "responses": {
+                    "200": {
+                        "description": "ทำงานสำเร็จ"
+                    }
+                    ,
+                    "404": {
+                        "description": "ทำงานไม่สำเร็จ"
+                    }
+                }
+            }
+        }
+        ,
+        "/regression/{ExampleId}": {
+            "get": {
+                "tags": [
+                    "API"
+                ]
+                ,
+                "summary": "กรอกหมายเลขโจทย์ ในเรื่อง regresstion"
+                ,
+                
+                "parameters": [
+                    {
+                        "name": "ExampleId",
+                        "in": "path",
+                        "description": "หมายเลขไอดีของโจทย์ตัวอย่าง",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ]
+                ,
+                "responses": {
+                    "200": {
+                        "description": "ค้นพบโจทย์"
+                    }
+                    ,
+                    "404": {
+                        "description": "ไม่พบโจทย์"
+                    }
+                }
+            }
+        }
+        
+        
     }
 }
 
