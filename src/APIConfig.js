@@ -8,7 +8,7 @@ const config = {
     "host": "my-json-server.typicode.com/donut1531/Numerical-Method"
     ,
     "path": {
-        "/root-of-equation": {
+        "/root_of_equation": {
             "get": {
                 "tags": [
                     "API"
@@ -28,7 +28,7 @@ const config = {
             }
         }
         ,
-        "/root-of-equation/{ExampleID}": {
+        "/root_of_equation/{ExampleID}": {
             "get": {
                 "tag": [
                     "API"
