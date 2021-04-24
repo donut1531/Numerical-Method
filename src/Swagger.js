@@ -7,7 +7,7 @@ export default class Swagger extends React.Component{
     render(){
         return(
            
-          <SwaggerUI spec = {config} />
+          <SwaggerUI spec ={config} />
             
         )
     }

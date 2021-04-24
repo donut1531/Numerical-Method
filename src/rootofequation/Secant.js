@@ -3,7 +3,7 @@ import {Modal_roe} from '../components/Modal'
 import {Input , Button} from 'antd';
 import all_Api from '../API/index'
 import {calSecant} from '../calculator'
-const math = require('mathjs');
+
 
 
 

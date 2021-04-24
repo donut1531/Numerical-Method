@@ -1,5 +1,6 @@
 const config = {
-    "swagger": "2.0",
+    "swagger": "2.0"
+    ,
     "info": {
         "description": "API Doccument By Swagger. จัดทำหน้านี้ขึ้นเพื่อรวบรวม API ที่ใช้นเว็บไซต์นี้",
         "title": "Swagger Numerical Method"
@@ -7,7 +8,7 @@ const config = {
     ,
     "host": "my-json-server.typicode.com/donut1531/Numerical-Method"
     ,
-    "path": {
+    "paths": {
         "/root_of_equation": {
             "get": {
                 "tags": [
@@ -30,18 +31,23 @@ const config = {
         ,
         "/root_of_equation/{ExampleID}": {
             "get": {
-                "tag": [
+                "tags": [
                     "API"
                 ],
-                "summary": "ระบุหมายเลขโจทย์ในเรื่อง Root of Equation"
+                "summary": "กรอกหมายเลขโจทย์ในเรื่อง Root of Equation"
                 ,
                 "parameters": [
                     {
-                        "name": "ExampleId",
-                        "in": "path",
-                        "description": "หมายเลขไอดีของโจทย์ตัวอย่างที่จะค้นหา",
-                        "required": true,
-                        "type": "integer",
+                        "name": "ExampleId"
+                        ,
+                        "in": "path"
+                        ,
+                        "description": "หมายเลขไอดีของโจทย์ตัวอย่างที่จะค้นหา"
+                        ,
+                        "required": true
+                        ,
+                        "type": "integer"
+                        ,
                         "format": "int64"
                     }
                 ]
@@ -63,24 +69,30 @@ const config = {
             "get": {
                 "tags": [
                     "API"
-                ],
-                "summary": "ค้นหาโจทย์ทั้งหมดในเรื่อง Matrix",
+                ]
+                ,
+                "summary": "ค้นหาโจทย์ทั้งหมดในเรื่อง Matrix"
+                ,
                 "responses": {
                     "200": {
                         "description": "ทำงานสำเร็จ"
-                    },
+                    }
+                    ,
                     "404": {
-                        "description": "ไม่พบโจทย์"
+                        "description": "ทำงานไม่สำเร็จ "
                     }
                 }
             }
-        },
+        }
+        ,
         "/matrix/{ExampleId}": {
             "get": {
                 "tags": [
                     "API"
-                ],
-                "summary": "ระบุหมายเลขโจทย์ในเรื่อง Matrix",
+                ]
+                ,
+                "summary": "กรอกหมายเลขโจทย์ในเรื่อง Matrix"
+                ,
                 "parameters": [
                     {
                         "name": "ExampleId",
@@ -90,11 +102,65 @@ const config = {
                         "type": "integer",
                         "format": "int64"
                     }
-                ],
+                ]
+                ,
+                "responses": {
+                    "200": {
+                        "description": "ค้นพยโจทย์"
+                    }
+                    ,
+                    "404": {
+                        "description": "ไม่พบโจทย์"
+                    }
+                }
+            }
+        }
+        ,
+        "/interpolation": {
+            "get": {
+                "tags": [
+                    "API"
+                ]
+                ,
+                "summary": "ค้นหาโจทย์ทั้งหมดในเรื่อง Interpolation"
+                ,
                 "responses": {
                     "200": {
                         "description": "ทำงานสำเร็จ"
-                    },
+                    }
+                    ,
+                    "404": {
+                        "description": "ทำงานไม่สำเร็จ"
+                    }
+                }
+            }
+        }
+        ,
+        "/interpolation/{ExampleId}": {
+            "get": {
+                "tags": [
+                    "API"
+                ]
+                ,
+                "summary": "กรอกหมายเลขโจทย์ ในเรื่อง Interpolation"
+                ,
+                
+                "parameters": [
+                    {
+                        "name": "ExampleId",
+                        "in": "path",
+                        "description": "หมายเลขไอดีของโจทย์ตัวอย่าง",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ]
+                ,
+                "responses": {
+                    "200": {
+                        "description": "ค้นพบโจทย์"
+                    }
+                    ,
                     "404": {
                         "description": "ไม่พบโจทย์"
                     }
