@@ -39,10 +39,15 @@ export function parseFloat2D (n,matrix){
 }
 
 export function copyArray(n,matrix){
-   let arr = [] 
-    return arr;
 
+    let arr = []
+    for(let i = 0;i < n ; i++){
+        arr.push([])
+        arr[i] = [].concat(matrix[i])
+    }
+    return arr;
 }
+
 export function calBisection  (initialEquation ,initialXL,initialXR,initialError) {
 
     let equation = checkEquation(initialEquation)

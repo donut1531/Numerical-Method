@@ -4,7 +4,7 @@ import all_Api from '../API/index'
 import {InputXY}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import '../Linear_Algebric_Equation/matrix.css'
-import { calNewtonInterpolation , copyArray } from '../Calculator.js'
+import { calNewtonInterpolation , copyArray } from '../Calculator'
 
 
 class Newton extends React.Component{
