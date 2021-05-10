@@ -5,16 +5,15 @@ var expect = require('expect.js');
 
 function add (a, b) { return a + b; };
 
-test('Test Home Page', () => {
+test('renders learn react link', () => {
   render(<App />);
-}
+});
 
-);
-// it('success', function () {
-//   expect(add(1, 3)).to.equal(4);
-// }
+it('should do math', function () {
+  expect(console.log(add(1, 3)))
+  expect(add(1, 3)).to.equal(4);
+});
 
-
-//  it('fail', function () {
-//   expect(add(1, 3)).to.equal(10);
-// }); 
+/* it('fail', function () {
+  expect(add(1, 3)).to.equal(10);
+}); */
