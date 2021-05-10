@@ -39,18 +39,14 @@ export function parseFloat2D (n,matrix){
 }
 
 export function copyArray(n,matrix){
-   let arr = []
-    for(let i = 0;i < n ; i++){
-        arr.push([])
-        arr[i] = [].concat(matrix[i])
-    }
+   let arr = [] 
     return arr;
 
 }
 export function calBisection  (initialEquation ,initialXL,initialXR,initialError) {
 
     let equation = checkEquation(initialEquation)
-
+    
     equation = math.parse(equation).compile()
 
     let xl = math.bignumber(initialXL)
@@ -936,6 +932,7 @@ export function calLagrange(initialMatrix1,initialPoint,initialX){
 }
 
 export function calSpline(initialMatrix1,initialX){
+    
     let arr = copyArray(initialMatrix1.length,initialMatrix1)
     
     arr = parseFloat2D(arr.length,arr)

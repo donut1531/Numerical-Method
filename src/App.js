@@ -2,7 +2,7 @@ import './App.css';
 import Bisection from './rootofequation/Bisection';
 import { Route, HashRouter,Link,Redirect } from "react-router-dom";
 import React from 'react';
-import { Layout, Typography, Menu, Breadcrumb} from 'antd';
+import { Layout, Typography, Menu, Breadcrumb,Button,Col,Row} from 'antd';
 
 import False_position from  './rootofequation/False_position'
 import One_point  from  './rootofequation/One_point'
@@ -41,10 +41,18 @@ class App extends React.Component{
      
       <Layout>
         <Header className="header">
-          
+          <Row>
+          <Col span ={20}>
           <div className="logo" />
           
-            <div style = {{color : 'white',fontSize : '42px'}} >Numerical Method</div>
+          <div style = {{color : 'white',fontSize : '42px'}} >Numerical Method</div>
+          </Col>
+          <Col span = {4}>
+          <Button style = {{backgroundColor : 'pink'}}  > <Link to = '/swagger'>Swagger</Link> </Button>
+          </Col>
+          </Row>
+         
+           
         </Header>
       <Layout style = {{minHeight:'100vh'}}>
       <Sider width={200} className="site-layout-background">
@@ -76,7 +84,7 @@ class App extends React.Component{
           <SubMenu key="sub3" title="Interpolation">
             <Menu.Item key="13">Newton's divided-differences<Link to = '/newton' /></Menu.Item>
             <Menu.Item key="14">Lagrange polynomials<Link to = '/lagrange' /></Menu.Item>
-            <Menu.Item key="15">Spline interpolation<Link to = '/spline' /></Menu.Item>
+            <Menu.Item key="15"> Cubic Spline<Link to = '/spline' /></Menu.Item>
           
             
           </SubMenu>

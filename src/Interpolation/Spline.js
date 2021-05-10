@@ -97,7 +97,7 @@ class Spline extends React.Component{
                 />
                 <Row style ={{marginBottom : '10px  '}}>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
-                            Spline Interpolation
+                            Cubic Spline 
                          </Col>
                     <Row className='borderaddmatrix'>
                         <Col className='buttonaddmatrix'>
