@@ -5,12 +5,16 @@ var expect = require('expect.js');
 
 function add (a, b) { return a + b; };
 
-test('renders learn react link', () => {
+test('Test Home Page', () => {
   render(<App />);
-});
+}
+
+);
+// it('success', function () {
+//   expect(add(1, 3)).to.equal(4);
+// }
 
 
-
-/* it('fail', function () {
-  expect(add(1, 3)).to.equal(10);
-}); */
+//  it('fail', function () {
+//   expect(add(1, 3)).to.equal(10);
+// }); 
