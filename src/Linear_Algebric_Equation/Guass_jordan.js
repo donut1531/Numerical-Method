@@ -5,7 +5,7 @@ import {Inputmatrix,InputB}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import './matrix.css'
 
-import { calJordan , copyArray } from '../calculator'
+import { calJordan , copyArray } from '../calculator.js'
 class Guass_jordan extends React.Component{
     state = {
         n: 2,

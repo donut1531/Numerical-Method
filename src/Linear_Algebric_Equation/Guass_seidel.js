@@ -4,7 +4,7 @@ import all_Api from '../API/index'
 import {Inputmatrix,InputB}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import './matrix.css'
-import { calSeidel , copyArray } from '../calculator'
+import { calSeidel , copyArray } from '../calculator.js'
 class Guass_Seidel extends React.Component{
     state = {
         n: 2,

@@ -4,7 +4,7 @@ import all_Api from '../API/index'
 import {Inputmatrix,InputB}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import './matrix.css'
-import { calLu , copyArray } from '../calculator'
+import { calLu , copyArray } from '../calculator.js'
 class Lu_decomposition extends React.Component{
 
     state = {
