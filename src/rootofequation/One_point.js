@@ -2,7 +2,7 @@ import React from 'react';
 import {Input , Button } from 'antd';
 import {Modal_roe} from '../components/Modal'
 import all_Api from '../API/index'
-import {calOnepoint} from '../calculator'
+import {calOnepoint} from '../calculator.js'
 
 const math = require('mathjs');
 
