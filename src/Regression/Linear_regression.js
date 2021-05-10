@@ -4,7 +4,7 @@ import all_Api from '../API/index'
 import {InputXY}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import '../Linear_Algebric_Equation/matrix.css'
-import { calLinear ,copyArray } from '../calculator.js'
+import { calLinear ,copyArray } from '../Calculator.js'
 
 
 export default class Linear_regression extends React.Component{

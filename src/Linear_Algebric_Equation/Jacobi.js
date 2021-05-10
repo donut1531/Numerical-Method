@@ -4,7 +4,7 @@ import all_Api from '../API/index'
 import {Inputmatrix,InputB}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import './matrix.css'
-import { calJacobi , copyArray } from '../calculator.js'
+import { calJacobi , copyArray } from '../Calculator.js'
 class Jacobi extends React.Component{
     state = {
         n: 2,

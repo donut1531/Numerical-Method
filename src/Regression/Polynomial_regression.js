@@ -4,7 +4,7 @@ import all_Api from '../API/index'
 import {InputXY}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import '../Linear_Algebric_Equation/matrix.css'
-import { calPoly ,copyArray } from '../calculator.js'
+import { calPoly ,copyArray } from '../Calculator.js'
 
 export default class Polynomial_regression extends React.Component{
 

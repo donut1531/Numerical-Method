@@ -5,7 +5,7 @@ import {Inputmatrix,InputB}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import './matrix.css'
 
-import { calElimination , copyArray } from '../calculator.js'
+import { calElimination , copyArray } from '../Calculator.js'
 
 class Guass_elimation extends React.Component{
 

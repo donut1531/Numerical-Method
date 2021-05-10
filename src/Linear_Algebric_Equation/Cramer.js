@@ -5,7 +5,7 @@ import {Inputmatrix,InputB}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import './matrix.css'
 
-import { calCramer , copyArray } from '../calculator.js'
+import { calCramer , copyArray } from '../Calculator.js'
 
 class Cramer extends React.Component{
 

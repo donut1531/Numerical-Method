@@ -4,7 +4,7 @@ import all_Api from '../API/index'
 import {Inputmatrix,InputB}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import './matrix.css'
-import { calConjugate , copyArray } from '../calculator.js'
+import { calConjugate , copyArray } from '../Calculator.js'
 class Conjugate_gradient extends React.Component{
     state = {
         n: 2,

@@ -4,7 +4,7 @@ import all_Api from '../API/index'
 import {InputXY}  from '../components/Create_matrix'
 import {Modal_matrix} from '../components/Modal'
 import '../Linear_Algebric_Equation/matrix.css'
-import { calLagrange ,copyArray } from '../calculator.js'
+import { calLagrange ,copyArray } from '../Calculator.js'
 
 class Lagrange extends React.Component{
 
