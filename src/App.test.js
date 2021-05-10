@@ -1,12 +1,16 @@
-import { render } from '@testing-library/react';
+import { render ,screen } from '@testing-library/react';
 import App from './App';
 
 var expect = require('expect.js');
 
 function add (a, b) { return a + b; };
 
-test('TEST HOME PAGE', () => {
+
+
+test('Numerical Method', () => {
   render(<App />);
+  const linkElement = screen.getByText('Numerical Method');
+  expect(linkElement).toBeInTheDocument();
 });
 
 it('should do math', function () {

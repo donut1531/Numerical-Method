@@ -3,7 +3,6 @@ import Bisection from './rootofequation/Bisection';
 import { Route, HashRouter,Link,Redirect } from "react-router-dom";
 import React from 'react';
 import { Layout, Menu, Breadcrumb,Button,Col,Row} from 'antd';
-
 import False_position from  './rootofequation/False_position'
 import One_point  from  './rootofequation/One_point'
 import Newton_raphson from  './rootofequation/Newton_raphson'
