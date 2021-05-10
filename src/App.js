@@ -2,7 +2,7 @@ import './App.css';
 import Bisection from './rootofequation/Bisection';
 import { Route, HashRouter,Link,Redirect } from "react-router-dom";
 import React from 'react';
-import { Layout, Typography, Menu, Breadcrumb,Button,Col,Row} from 'antd';
+import { Layout, Menu, Breadcrumb,Button,Col,Row} from 'antd';
 
 import False_position from  './rootofequation/False_position'
 import One_point  from  './rootofequation/One_point'
@@ -26,8 +26,8 @@ import Swagger from './Swagger'
 
 const { SubMenu } = Menu;
 
-const { Header, Footer, Sider, Content } = Layout;
-const { Title } = Typography;
+const { Header, Sider, Content } = Layout;
+
 
 
 class App extends React.Component{
