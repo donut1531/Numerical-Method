@@ -1,6 +1,4 @@
-  
-import { render, screen } from '@testing-library/react';
-import App from './App';
+
 function add (a, b) { return a * b; };
 
 var expect = require('expect.js');
