@@ -2,12 +2,12 @@ import React from 'react';
 import {Input, Row, Col , Button  } from 'antd'
 import all_Api from '../API/index'
 import {InputMultiple}  from '../components/Create_matrix'
-import {Modal_matrix} from '../components/Modal'
+import {Modal_for_regression} from '../components/Modal'
 import '../Linear_Algebric_Equation/matrix.css'
 import { calMultiple ,copyArray } from '../Calculator.js'
 
 export default class Multi_Linear extends React.Component{
-    
+
     state = {
         n : 2,
         A : [[],[]]  ,
@@ -92,12 +92,13 @@ export default class Multi_Linear extends React.Component{
         render(){
             return(
                 <div>
-                      <Modal_matrix
+                      <Modal_for_regression
                     visible={this.state.isModalVisible}
                     onOK={this.onClickOk}
                     hasData={this.state.hasData}
                     apiData={this.state.apiData}
                     onClick={this.onClickInsert}
+                    id = {this.state.id}
                 />
                 <Row style ={{marginBottom : '10px  '}}>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>

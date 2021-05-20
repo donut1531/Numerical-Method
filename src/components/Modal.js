@@ -92,18 +92,18 @@ class Modal_matrix extends React.Component{
 class Modal_for_regression extends React.Component{
 
 
-    setformat(n,matrixA){
-        let arrRow =[]
-            for(let i = 0 ; i < n ; i++){
-                let arrCol = []
-                for(let j = 0 ; j < n ; j++){
-                    arrCol.push(<Col span ={5}> {matrixA[i][j]} </Col>)
-                }
-                arrRow.push(<Row> {arrCol} </Row>)
-            }
-            return arrRow
+    // setformat(n,matrixA){
+    //     let arrRow =[]
+    //         for(let i = 0 ; i < n ; i++){
+    //             let arrCol = []
+    //             for(let j = 0 ; j < 2 ; j++){
+    //                 arrCol.push(<Col span ={5}> {matrixA[i][j]} </Col>)
+    //             }
+    //             arrRow.push(<Row> {arrCol} </Row>)
+    //         }
+    //         return arrRow
         
-    } 
+    // } 
     render(){
         return(
             <div>
@@ -120,16 +120,16 @@ class Modal_for_regression extends React.Component{
                     ]}
                 >   
                    {this.props.hasData ?
-                        
-                        this.props.apiData.map((x,i) =>(
+                      
+                            
                             <Row >
-                                    <Col span={12}> { this.setformat(x["n"],x["matrixA"])}</Col>
+                                    <Col span={12}>  โจทย์ </Col>
                                     <Col span={12}>
-                                        <Button style ={{marginBottom : '10px'}} name = {'insert_'+i} type='primary'  onClick={this.props.onClick}>Insert</Button>
+                                        <Button style ={{marginBottom : '10px'}} name = {'insert_'+this.props.id} type='primary'  onClick={this.props.onClick}>Insert</Button>
                                     </Col>
                                    
                             </Row>
-                        ))
+                        
                         : <span style={{fontSize:"25px", textAlign:"center"}}>กำลังโหลดข้อมูล</span>}
                     
                 </Modal>
