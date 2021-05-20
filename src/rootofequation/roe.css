@@ -1,0 +1,6 @@
+.content-box{
+    background-color: rgb(213, 236, 236);
+}
+.content-box .ant-input{
+    width: 50%;
+}

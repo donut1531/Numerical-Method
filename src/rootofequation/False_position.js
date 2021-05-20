@@ -1,6 +1,6 @@
 import React from 'react';
 import {Input , Button} from 'antd';
-
+import './roe.css'
 import all_Api from '../API/index'
 import {Modal_roe} from '../components/Modal.js'
 import {calFalse} from '../Calculator.js'
@@ -95,8 +95,8 @@ class False_position extends React.Component{
                     apiData = {this.state.apiData}
                     onClick={this.onClickInsert}
                 /> 
-            
-            <div>
+             <div className = "content-box">
+            <div style = {{ fontWeight : "bold" , fontSize : "20px"}}>
              False-Position Method
             </div>
             <div style = {{marginTop : '10px'}}>
@@ -117,7 +117,7 @@ class False_position extends React.Component{
                 {this.state.arr}
             </div>
            
-
+            </div>
             </div>
         );
     }

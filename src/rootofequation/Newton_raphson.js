@@ -2,7 +2,7 @@ import React from 'react';
 import {Input , Button} from 'antd';
 import {Modal_roe} from '../components/Modal'
 import all_Api from '../API/index'
-
+import './roe.css'
 import {calNewton} from '../Calculator.js'
 const math = require('mathjs');
 class Newton_raphson extends React.Component{
@@ -82,8 +82,8 @@ class Newton_raphson extends React.Component{
                     apiData = {this.state.apiData}
                     onClick={this.onClickInsert}
                 /> 
-            
-            <div>
+             <div className = "content-box">
+            <div style = {{ fontWeight : "bold" , fontSize : "20px"}}>
              Newton_Raphson Method
             </div>
 
@@ -99,6 +99,7 @@ class Newton_raphson extends React.Component{
             <span><Button type = 'primary' onClick = {this.cal_newton} >Calculate</Button></span>
                 <span style = {{padding : '0px 0px 0px 30px'}}><Button size='medium' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button></span>
                 {this.state.arr}
+            </div>
             </div>
             </div>
         );

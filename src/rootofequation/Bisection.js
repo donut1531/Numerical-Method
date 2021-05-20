@@ -1,4 +1,5 @@
 import React from 'react';
+import './roe.css'
 import {Input , Button} from 'antd';
 import all_Api from '../API/index'
 import {Modal_roe} from '../components/Modal.js'
@@ -97,33 +98,33 @@ class Bisection extends React.Component{
                     hasData={this.state.hasData}
                     apiData = {this.state.apiData}
                     onClick={this.onClickInsert}
-                /> 
-             <div>
-             Bisection Method
-             </div>
-             <div style = {{
-                 marginTop : '10px'
-             }}>
-              <Input placeholder = 'ใส่สมการ' value = {this.state.Equation} onChange = {this.getEquation}/>
-               
-              {this.state.status}
-             </div>
-             <div style = {{
-                 marginTop : '10px'
-                 
-             }}>
-                 <span style = {{marginLeft : '10px'}}><Input placeholder = 'XL = 0.0' value = {this.state.XL} onChange = {this.getXL}    style = {{width : '100px'}} /></span>
-                 <span style = {{marginLeft : '10px'}}><Input placeholder = 'XR = 0.0' value = {this.state.XR} onChange = {this.getXR}    style = {{width : '100px'}}/></span>
-                 <span style = {{marginLeft : '10px'}}><Input placeholder = 'Error = 0.000' value = {this.state.E} onChange = {this.getE} style = {{width : '100px'}} /></span>
-             </div>
-             <div style = {{marginTop : '10px',marginLeft : '10px' }}>
-                 
-                 <span><Button type = 'primary' onClick = {this.cal_bisection} >Calculate</Button></span>
-                <span style = {{padding : '0px 0px 0px 30px'}}><Button size='medium' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button></span>
-                {this.state.arr}
+                />
+                <div className="content-box">
 
-             </div>
-             
+                    <div style = {{ fontWeight : "bold" , fontSize : "20px"}}>
+                        Bisection Method
+                </div>
+                    <div style={{ marginTop: '10px' }}>
+                        <Input placeholder='ใส่สมการ' value={this.state.Equation} onChange={this.getEquation} />
+
+                        {this.state.status}
+                    </div>
+                    <div style={{
+                        marginTop: '10px'
+
+                    }}>
+                        <span style={{ marginLeft: '10px' }}><Input placeholder='XL = 0.0' value={this.state.XL} onChange={this.getXL} style={{ width: '100px' }} /></span>
+                        <span style={{ marginLeft: '10px' }}><Input placeholder='XR = 0.0' value={this.state.XR} onChange={this.getXR} style={{ width: '100px' }} /></span>
+                        <span style={{ marginLeft: '10px' }}><Input placeholder='Error = 0.000' value={this.state.E} onChange={this.getE} style={{ width: '100px' }} /></span>
+                    </div>
+                    <div style={{ marginTop: '10px', marginLeft: '10px' }}>
+
+                        <span><Button type='primary' onClick={this.cal_bisection} >Calculate</Button></span>
+                        <span style={{ padding: '0px 0px 0px 30px' }}><Button size='medium' type='primary' onClick={this.onClickExample}>ตัวอย่าง</Button></span>
+                        {this.state.arr}
+
+                    </div>
+                </div>
             </div>
         );
     }

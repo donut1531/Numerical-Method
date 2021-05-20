@@ -3,7 +3,7 @@ import {Input , Button } from 'antd';
 import {Modal_roe} from '../components/Modal'
 import all_Api from '../API/index'
 import {calOnepoint} from '../Calculator.js'
-
+import './roe.css'
 const math = require('mathjs');
 
 class One_point extends React.Component{
@@ -83,8 +83,8 @@ class One_point extends React.Component{
                     apiData = {this.state.apiData}
                     onClick={this.onClickInsert}
                 /> 
-            
-            <div>
+            <div className = "content-box">
+            <div style = {{ fontWeight : "bold" , fontSize : "20px"}}>
              One-Point Iteration Method
             </div>
 
@@ -103,7 +103,7 @@ class One_point extends React.Component{
                     </span>
                     {this.state.arr}
             </div>
-            
+            </div>
             </div>
         );
     }
