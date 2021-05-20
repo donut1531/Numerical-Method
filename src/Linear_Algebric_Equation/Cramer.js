@@ -99,11 +99,11 @@ class Cramer extends React.Component{
              
              
             
-             <Modal_matrix
+             <Modal_matrix                                              
                     visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
+                    onOK={this.onClickOk}                               
                     hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
+                    apiData = {this.state.apiData}          
                     onClick={this.onClickInsert}
                 />
                 <Row>

@@ -29,7 +29,7 @@ const config = {
             }
         }
         ,
-        "/root_of_equation/{ExampleID}": {
+        "/root_of_equation/{ExampleId}": {
             "get": {
                 "tags": [
                     "API"
@@ -52,7 +52,7 @@ const config = {
                     }
                 ]
                 ,
-                "response": {
+                "responses": {
                     "200": {
                         "description": "ค้นพบโจทย์"
                     }
@@ -106,7 +106,7 @@ const config = {
                 ,
                 "responses": {
                     "200": {
-                        "description": "ค้นพยโจทย์"
+                        "description": "ค้นพบโจทย์"
                     }
                     ,
                     "404": {

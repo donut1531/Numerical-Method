@@ -125,6 +125,7 @@ class Lagrange extends React.Component{
 
                         <Input style={{ width: '150px', marginBottom: '20px', marginTop: '10px' }} value={this.state.X} placeholder='Example X = 42000' onChange={this.onChangeX} />
                     </Col>
+                    <Col span = {24}>กรุณาใส่จุดที่ต้องการ </Col>
                     <Col span={24}>
                         <Input style={{ width: '150px', marginBottom: '20px', marginTop: '10px' }} value={this.state.P} placeholder='Example P = 1,2,3' onChange={this.onChangePoint} />
                     </Col>

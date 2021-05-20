@@ -7,6 +7,7 @@ import '../Linear_Algebric_Equation/matrix.css'
 import { calMultiple ,copyArray } from '../Calculator.js'
 
 export default class Multi_Linear extends React.Component{
+    
     state = {
         n : 2,
         A : [[],[]]  ,
@@ -16,7 +17,9 @@ export default class Multi_Linear extends React.Component{
         data : [],
         isModalVisible: false,
         apiData: [],
-        hasData: false}
+        hasData: false,
+        id : 2
+        }
         async getData() {
             let tempData = null
             await all_Api.get_Matrix_Regression().then(res => { tempData = res.data })

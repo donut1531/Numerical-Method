@@ -17,7 +17,8 @@ export default class Linear_regression extends React.Component{
         data: [],
         isModalVisible: false,
         apiData: [],
-        hasData: false
+        hasData: false,
+        id : 0
     }
     async getData() {
         let tempData = null

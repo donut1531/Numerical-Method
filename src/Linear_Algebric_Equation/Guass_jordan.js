@@ -25,9 +25,11 @@ class Guass_jordan extends React.Component{
         this.setState({ hasData: true })
         // console.log(tempData)
     }
+
     onClickOk = e => {
         this.setState({ isModalVisible: false })
     }
+    
     onClickInsert = e => {
         let index = e.currentTarget.getAttribute('name').split('_')
         index = parseInt(index[1])

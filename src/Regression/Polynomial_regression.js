@@ -16,7 +16,8 @@ export default class Polynomial_regression extends React.Component{
         data: [],
         isModalVisible: false,
         apiData: [],
-        hasData: false
+        hasData: false,
+        id : 1
     }
     async getData() {
         let tempData = null
