@@ -43,8 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@testing-library/jest-dom": "^5.12.0"
-  }
- 
+  "devDependencies": {}
 }
