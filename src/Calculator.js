@@ -229,7 +229,7 @@ export function calNewton(initialEquation, initialX, initialError) {
 
     let fXprime = math.derivative(equation,'x')
     let arr = []
-    // console.log('aaa')
+    
     let error = math.bignumber(initialError)
     arr.push(<div style = {{textAlign : 'left' , fontSize : '25px'}}><span> f'(x) = {fXprime.toString()}</span></div>)
     fXprime = fXprime.compile()

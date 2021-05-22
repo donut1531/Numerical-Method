@@ -31,7 +31,7 @@ class False_position extends React.Component{
             await all_Api.get_Root_of_equation().then(res => {tempData = res.data})
             this.setState({apiData:tempData})
             
-            // console.log(tempData)
+            
             this.setState({
                 Equation: this.state.apiData[1]["equation"],
                 XL : this.state.apiData[1]["xl"],

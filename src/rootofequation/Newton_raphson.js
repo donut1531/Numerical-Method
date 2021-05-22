@@ -13,15 +13,23 @@ class Newton_raphson extends React.Component{
           X : '' ,
           E : '' ,
           status : null,
-          isModalVisible: false,
+         
           apiData: [],
-          hasData: false};
+    }
     async getData() {
         let tempData = null
         await all_Api.get_Root_of_equation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
-        // console.log(tempData)
+       
+        
+
+        this.setState({
+            Equation: this.state.apiData[3]["equation"],
+            X: this.state.apiData[3]["x"],
+           
+            E: this.state.apiData[3]["error"],
+            
+        })
     }
     onClickOk = e => {
         this.setState({ isModalVisible: false })
@@ -29,19 +37,12 @@ class Newton_raphson extends React.Component{
     onClickInsert = e => {
         let index = e.currentTarget.getAttribute('name').split('_')
         index = parseInt(index[1])
-        this.setState({
-            Equation: this.state.apiData[index]["equation"],
-            X: this.state.apiData[index]["initial_x"],
-           
-            E: this.state.apiData[index]["error"],
-            isModalVisible: false
-        })
+       
     }
     onClickExample = e => {
-        if (!this.state.hasData) {
+       
             this.getData()
-        }
-        this.setState({ isModalVisible: true })
+       
     }
     getEquation = (Event) => {
         this.setState({Equation : Event.target.value})
@@ -75,13 +76,7 @@ class Newton_raphson extends React.Component{
 
         return(
             <div>
-                 <Modal_roe
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                /> 
+             
              <div className = "content-box">
             <div style = {{ fontWeight : "bold" , fontSize : "20px"}}>
              Newton_Raphson Method

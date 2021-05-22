@@ -25,7 +25,7 @@ class One_point extends React.Component{
         await all_Api.get_Root_of_equation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
      
-        // console.log(tempData)
+        
         this.setState({
             Equation: this.state.apiData[2]["equation"],
             X: this.state.apiData[2]["x"],
