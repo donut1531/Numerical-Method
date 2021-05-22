@@ -48,6 +48,14 @@ export function copyArray(n,matrix){
 }
 
 export function calBisection  (initialEquation ,initialXL,initialXR,initialError) {
+    
+    //   let  nn = 0.1
+    //   let  nb = 0.2
+    //     console.log(nn+nb)
+    //   let number =math.bignumber(1.2)
+    //   let number2 =math.bignumber(2.2)
+    //   let addnum =  math.add(number,number2)
+    //   console.log(addnum.toString())
 
     let equation = checkEquation(initialEquation)
     
@@ -266,21 +274,21 @@ export function calNewton(initialEquation, initialX, initialError) {
        
 
         arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-               <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {X.toFixed(9).toString()}</span>
-               <span > Error : {checkError.toFixed(9).toString()}</span>
+               <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {X.toFixed(9)}</span>
+               <span > Error : {checkError.toFixed(9)}</span>
                </div>);
                console.log(i);
                i++;
 
     }
-    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X.toFixed(9).toString()}</div>);
+    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X.toFixed(9)}</div>);
    
     return arr
 }
 export function calSecant(initialEquation, initialX0,initialX1, initialError) {
     
     let equation = checkEquation(initialEquation)
-    console.log('aaa')
+    
     equation = math.parse(equation).compile()
     
     let x0 = math.bignumber(initialX0)
@@ -290,7 +298,7 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
    let fx0 = equation.evaluate({x:x0})
    let fx1 = equation.evaluate({x:x1})
     
-    console.log('bbb')
+    
     let error = math.bignumber(initialError)
 
     
@@ -307,7 +315,7 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
     while (checkError > error) {
 
        x = math.subtract(x1 , math.divide(math.multiply(fx1,math.subtract(x0 , x1) ), math.subtract(fx0 , fx1)));
-       console.log(x.toString())     
+    //    console.log(x.toString())     
             checkError = Math.abs((x - x1)/x);
             
             fx0 = fx1;
@@ -323,27 +331,26 @@ export function calSecant(initialEquation, initialX0,initialX1, initialError) {
       
 
         arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-            <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {x.toFixed(9).toString()}</span>
-            <span > Error : {checkError.toFixed(9).toString()}</span>
+            <span style = {{ width : '60%' , textAlign : 'left'}}> Iteration {i} : x is {x.toFixed(9)}</span>
+            <span > Error : {checkError.toFixed(9)}</span>
             </div>);
             
             i++;
 
     }
     
-    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {x.toFixed(9).toString()}</div>);
+    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {x.toFixed(9)}</div>);
     
     return arr
 }
 
 export function calCramer(n, initialMatrix1, initialMatrix2) {
 
-     
    
     let matrix1=math.bignumber(initialMatrix1)
     
     let matrix2=math.bignumber(initialMatrix2)
-    let det_matrixA = math.det(matrix1)
+    let det_matrixA = math.bignumber(math.det(matrix1))
     
     let temp_matrix1 = copyArray(n,matrix1)
     console.log(matrix1)
@@ -362,7 +369,7 @@ export function calCramer(n, initialMatrix1, initialMatrix2) {
             }
             X[i] = math.divide(math.det(temp_matrix1) , det_matrixA)
             console.log(X[i].toString())
-            arr.push(<div> X{(i+1)} is {X[i].toFixed(9).toString()} </div> )
+            arr.push(<div> X{(i+1)} is {X[i].toFixed(9)} </div> )
             
             temp_matrix1 = copyArray(n,matrix1);
         }
@@ -379,7 +386,7 @@ export function calElimination(n, initialMatrix1, initialMatrix2) {
     initialMatrix1 = parseInt2D(n,initialMatrix1)
     initialMatrix2 = parseInt1D(n,initialMatrix2)
     let matrix1=copyArray(n,initialMatrix1)
-    let matrix2=copyArray(n,initialMatrix2)
+    let matrix2=[...initialMatrix2]
 
     
     
@@ -391,7 +398,7 @@ export function calElimination(n, initialMatrix1, initialMatrix2) {
         X.push(1)
     }
     
-   console.log(matrix1,toString())
+   
     for(let i = 1;i < n ; i++){
         for(let j = i ;j < n ; j++){
 
@@ -406,17 +413,31 @@ export function calElimination(n, initialMatrix1, initialMatrix2) {
         }
          
     }
+    console.log(matrix1,toString())
+    let ans_x = []
+    let ans_y = []
+    for(let i = 0 ; i < matrix1.length ; i++){
+        ans_x.push([])
+        for(let j = 0 ;j < matrix1.length+1 ; j++){
 
-   for(let i = n-1 ;i >= 0 ; i--){
-        let sum = 0;
-        for(let j = 0 ; j < n ;j++){
-            sum = sum + matrix1[i][j]*X[j];
+            if(j == 3){
+                ans_y.push( matrix1[i][j])
+            }
+            else{
+              ans_x[i][j] = matrix1[i][j]
+            }
         }
-        sum = sum - matrix1[i][i]
-    X[i] = ((matrix1[i][n] - sum)/matrix1[i][i])
-       
     }
-    X.map((x,i) => arr.push(<div> X{(i+1)} is {x.toFixed(9).toString()} </div>))
+    console.log(ans_x)
+    console.log(ans_y)
+    //นำ A inverse มาคูณเข้ากับ ans_y เพื่อหาค่า a0,a1,a2,a3
+    let inverse = math.inv(ans_x)
+
+    let ans_matrix = math.multiply(inverse,ans_y)
+   
+    
+     
+    ans_matrix.map((x,i) => arr.push(<div> X{(i+1)} is {x.toFixed(9)} </div>))
     
         
     return arr
