@@ -2,7 +2,7 @@ import React from 'react';
 import {Input, Row, Col , Button  } from 'antd'
 import all_Api from '../API/index'
 import {InputXY}  from '../components/Create_matrix'
-import {Modal_for_regression} from '../components/Modal'
+
 import '../Linear_Algebric_Equation/matrix.css'
 import { calLinear ,copyArray } from '../Calculator.js'
 
@@ -15,42 +15,35 @@ export default class Linear_regression extends React.Component{
       
         X: '',
         data: [],
-        isModalVisible: false,
+       
         apiData: [],
-        hasData: false,
+        
         id : 0
     }
     async getData() {
         let tempData = null
         await all_Api.get_Matrix_Regression().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
+       
         // console.log(tempData)
-    }
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
         this.setState({
-            n: this.state.apiData[index]["n"],
+            n: this.state.apiData[0]["n"],
             
-            A: copyArray(this.state.apiData[index]["n"],this.state.apiData[index]["matrixA"]),
+            A: copyArray(this.state.apiData[0]["n"],this.state.apiData[0]["matrixA"]),
 
-            X: this.state.apiData[index]["x"],
+            X: this.state.apiData[0]["x"],
 
         
             
-            isModalVisible: false
+           
         })
     }
+   
 
     onClickExample = e => {
-         if (!this.state.hasData) { 
+         
             this.getData()
-        }
-        this.setState({ isModalVisible: true })
+       
     }
 
     onChangematrixXY = (e) =>{
@@ -89,14 +82,7 @@ export default class Linear_regression extends React.Component{
     render(){
         return(
             <div>
-                   <Modal_for_regression
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData={this.state.apiData}
-                    onClick={this.onClickInsert}
-                    id = {this.state.id}
-                />
+                   
                 <Row style ={{marginBottom : '10px  '}}>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                             Linear Regression

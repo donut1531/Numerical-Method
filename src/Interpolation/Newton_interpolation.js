@@ -2,7 +2,7 @@ import React from 'react';
 import {Input, Row, Col , Button  } from 'antd'
 import all_Api from '../API/index'
 import {InputXY}  from '../components/Create_matrix'
-import {Modal_matrix} from '../components/Modal'
+
 import '../Linear_Algebric_Equation/matrix.css'
 import { calNewtonInterpolation , copyArray } from '../Calculator'
 
@@ -15,9 +15,9 @@ class Newton extends React.Component{
         X: '',
        
         data: [],
-        isModalVisible: false,
+        
         apiData: [],
-        hasData: false
+       
     }
 
     
@@ -25,33 +25,25 @@ class Newton extends React.Component{
         let tempData = null
         await all_Api.get_Matrix_Interpolation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
-        // console.log(tempData)
-    }
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
+     
+       
         this.setState({
-            n: this.state.apiData[index]["n"],
+            n: this.state.apiData[0]["n"],
             
-            A: copyArray(this.state.apiData[index]["n"],this.state.apiData[index]["matrixA"]),
+            A: copyArray(this.state.apiData[0]["n"],this.state.apiData[0]["matrixA"]),
 
-            X: this.state.apiData[index]["x"],
+            X: this.state.apiData[0]["x"],
 
-            P: [...this.state.apiData[index]["point"]],
-            
-            isModalVisible: false
+            P: [...this.state.apiData[0]["point"]],
+           
         })
     }
+  
 
     onClickExample = e => {
-         if (!this.state.hasData) { 
+       
             this.getData()
-        }
-        this.setState({ isModalVisible: true })
+     
     }
 
     onChangematrixXY = (e) =>{
@@ -97,13 +89,7 @@ class Newton extends React.Component{
 
         return(
             <div>
-                <Modal_matrix
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+               
                 <Row style ={{marginBottom : '10px  '}}>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                             Newton's divided-differences

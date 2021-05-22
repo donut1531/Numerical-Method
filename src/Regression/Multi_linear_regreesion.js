@@ -2,7 +2,7 @@ import React from 'react';
 import {Input, Row, Col , Button  } from 'antd'
 import all_Api from '../API/index'
 import {InputMultiple}  from '../components/Create_matrix'
-import {Modal_for_regression} from '../components/Modal'
+
 import '../Linear_Algebric_Equation/matrix.css'
 import { calMultiple ,copyArray } from '../Calculator.js'
 
@@ -15,41 +15,35 @@ export default class Multi_Linear extends React.Component{
         X2 : '',
         X3 : '',
         data : [],
-        isModalVisible: false,
+       
         apiData: [],
-        hasData: false,
+        
         id : 2
         }
         async getData() {
             let tempData = null
             await all_Api.get_Matrix_Regression().then(res => { tempData = res.data })
             this.setState({ apiData: tempData })
-            this.setState({ hasData: true })
-            // console.log(tempData)
-        }
-        onClickOk = e => {
-            this.setState({ isModalVisible: false })
-        }
-        onClickInsert = e => {
-            let index = e.currentTarget.getAttribute('name').split('_')
-            index = parseInt(index[1])
+            
+            
             this.setState({
-                n: this.state.apiData[index]["n"],
+                n: this.state.apiData[2]["n"],
                 
-                A: copyArray(this.state.apiData[index]["n"],this.state.apiData[index]["matrixA"]),
+                A: copyArray(this.state.apiData[2]["n"],this.state.apiData[2]["matrixA"]),
     
-                X1: this.state.apiData[index]["x1"],
-                X2: this.state.apiData[index]["x2"],
-                X3: this.state.apiData[index]["x3"],
-                isModalVisible: false
+                X1: this.state.apiData[2]["x1"],
+                X2: this.state.apiData[2]["x2"],
+                X3: this.state.apiData[2]["x3"],
+               
             })
         }
-    
+        
+        
         onClickExample = e => {
-             if (!this.state.hasData) { 
+            
                 this.getData()
-            }
-            this.setState({ isModalVisible: true })
+            
+           
         }
     
         onChangematrixXY = (e) =>{
@@ -92,14 +86,7 @@ export default class Multi_Linear extends React.Component{
         render(){
             return(
                 <div>
-                      <Modal_for_regression
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData={this.state.apiData}
-                    onClick={this.onClickInsert}
-                    id = {this.state.id}
-                />
+               
                 <Row style ={{marginBottom : '10px  '}}>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                             Linear Regression
