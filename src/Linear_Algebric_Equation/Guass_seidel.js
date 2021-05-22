@@ -2,7 +2,7 @@ import React from 'react';
 import {Input, Row, Col , Button  } from 'antd'
 import all_Api from '../API/index'
 import {Inputmatrix,InputB}  from '../components/Create_matrix'
-import {Modal_matrix} from '../components/Modal'
+
 import './matrix.css'
 import { calSeidel , copyArray } from '../Calculator.js'
 class Guass_Seidel extends React.Component{
@@ -12,9 +12,9 @@ class Guass_Seidel extends React.Component{
         B: [],
         E: '',
         data: [],
-        isModalVisible: false,
+       
         apiData: [],
-        hasData: false
+      
     }
 
     
@@ -22,32 +22,26 @@ class Guass_Seidel extends React.Component{
         let tempData = null
         await all_Api.get_Matrix().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
-        // console.log(tempData)
-    }
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
+        
         this.setState({
-            n: this.state.apiData[index]["n"],
+            n: this.state.apiData[1]["n"],
             
-            A: copyArray(this.state.apiData[index]["n"],this.state.apiData[index]["matrixA"]),
+            A: copyArray(this.state.apiData[1]["n"],this.state.apiData[1]["matrixA"]),
 
-            B: [...this.state.apiData[index]["matrixB"]],
+            B: [...this.state.apiData[1]["matrixB"]],
             
-            E: this.state.apiData[index]["error"],
-            isModalVisible: false
+            E: this.state.apiData[1]["error"],
+          
         })
+       
     }
+   
 
     onClickExample = e => {
-         if (!this.state.hasData) { 
+         
             this.getData()
-        }
-        this.setState({ isModalVisible: true })
+       
+      
     }
 
     onChangematrixA = (e) =>{
@@ -93,13 +87,7 @@ class Guass_Seidel extends React.Component{
 
         return(
             <div>
-                 <Modal_matrix
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+               
                 <Row>
                     <Col span={24} style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>
                         Guass Seidel Iteration

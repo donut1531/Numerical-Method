@@ -449,7 +449,7 @@ export function calJordan(n, initialMatrix1, initialMatrix2) {
     initialMatrix1 = parseInt2D(n,initialMatrix1)
     initialMatrix2 = parseInt1D(n,initialMatrix2)
     let matrix1=copyArray(n,initialMatrix1)  
-    let matrix2=copyArray(n,initialMatrix2) 
+    let matrix2=[...initialMatrix2] 
     
     
     
@@ -490,7 +490,7 @@ export function calJordan(n, initialMatrix1, initialMatrix2) {
         }
          
     }
-
+    //แก้หาค่า X
     for(let i = 0 ;i < n ; i++){
         X[i] = ((matrix1[i][n] )/matrix1[i][i])
     }
@@ -509,19 +509,22 @@ export function calLu(n, initialMatrix1, initialMatrix2) {
     initialMatrix1 = parseInt2D(n,initialMatrix1)
     initialMatrix2 = parseInt1D(n,initialMatrix2)
     let A = copyArray(n,initialMatrix1) 
-    let B = copyArray(n,initialMatrix2) 
+    let B = [...initialMatrix2] 
 
-   
-   
+    
+    
     let arr = []
-    let U = []
     let L = []
+    let U = []
+    
     let Y = []
     let X = []
     
     for (let i = 0; i < n; i++) {
-            U.push([])
+
             L.push([])
+            U.push([])
+            
             Y.push(1)
             X.push(1)
         for (let j = 0; j < n; j++) {
@@ -550,50 +553,39 @@ export function calLu(n, initialMatrix1, initialMatrix2) {
 
             for (let k = 0; k < n; k++) {
 
-
+               //for คุณ เก็บค่า
                 if (k != j || i < j) {
                     sum += L[i][k] * U[k][j]
+                    console.log(sum)
+                   
+                    
                 }
 
 
             }
+            //เก็บใน L 
             if (i >= j) {
                 sum = A[i][j] - sum;
                 L[i][j] = sum;
             }
+             //เก็บใน U
             else {
                 sum = A[i][j] - sum;
                 U[i][j] = sum / L[i][i];
             }
         }
     }
-   
     
-    for (let i = 0; i < n; i++) {
-        let sum = 0;
-        for (let j = 0; j < n; j++) {
+    let inverse = math.inv(L)
 
-            sum += L[i][j] * Y[j];
-        }
-        sum = sum - L[i][i] * Y[i];
+     Y = math.multiply(inverse,B)
 
-        Y[i] = ((B[i] - sum) / L[i][i])
-        
-    }
-    for (let i = n-1; i >= 0; i--) {
-        let sum = 0;
-        for (let j = 0; j < n; j++) {
+     inverse = math.inv(U)
 
-            sum += U[i][j] * X[j];
-        }
-        sum = sum - U[i][i] * X[i];
-
-        X[i] = ((Y[i] - sum) / U[i][i])
-
-    }
+     X = math.multiply(inverse,Y)
     
   
-    X.map((x, i) => arr.push(<div> X{(i+1)} is {x.toFixed(9).toString()} </div>))
+    X.map((x, i) => arr.push(<div> X{(i+1)} is {x.toFixed(9)} </div>))
 
 
 
@@ -611,7 +603,7 @@ export function calJacobi(n, initialMatrix1, initialMatrix2,initialError) {
     initialMatrix1 = parseInt2D(n,initialMatrix1)
     initialMatrix2 = parseInt1D(n,initialMatrix2)
     let matrix1=copyArray(n,initialMatrix1)
-    let matrix2=copyArray(n,initialMatrix2)
+    let matrix2=[...initialMatrix2]
     
     let error = initialError
 
@@ -629,7 +621,7 @@ export function calJacobi(n, initialMatrix1, initialMatrix2,initialError) {
     }
     
     while(check){
-
+     
        
         
         
@@ -686,7 +678,7 @@ export function calSeidel(n, initialMatrix1, initialMatrix2,initialError) {
     initialMatrix1 = parseInt2D(n,initialMatrix1)
     initialMatrix2 = parseInt1D(n,initialMatrix2)
     let matrix1=copyArray(n,initialMatrix1)
-    let matrix2=copyArray(n,initialMatrix2)
+    let matrix2=[...initialMatrix2]
     
     let error = initialError
 
