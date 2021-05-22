@@ -2,7 +2,7 @@ import React from 'react';
 import './roe.css'
 import {Input , Button} from 'antd';
 import all_Api from '../API/index'
-import {Modal_roe} from '../components/Modal.js'
+
 import { calBisection } from '../Calculator.js'
 
 
@@ -14,39 +14,33 @@ class Bisection extends React.Component{
         XR: '',
         E: '',
         arr: [],
-
+        
         status: null,
-        isModalVisible: false,
+        
         apiData: [],
-        hasData: false
+        
     };
     async getData(){
         let tempData = null
         await all_Api.get_Root_of_equation().then(res => { tempData = res.data })
         this.setState({ apiData: tempData })
-        this.setState({ hasData: true })
+        
         // console.log(tempData)
-    }
-    onClickOk = e => {
-        this.setState({ isModalVisible: false })
-    }
-    onClickInsert = e => {
-        let index = e.currentTarget.getAttribute('name').split('_')
-        index = parseInt(index[1])
         this.setState({
-            Equation: this.state.apiData[index]["equation"],
-            XL: this.state.apiData[index]["xl"],
-            XR: this.state.apiData[index]["xr"],
-            E: this.state.apiData[index]["error"],
-            isModalVisible: false
+            Equation: this.state.apiData[0]["equation"],
+            XL: this.state.apiData[0]["xl"],
+            XR: this.state.apiData[0]["xr"],
+            E: this.state.apiData[0]["error"],
+           
         })
     }
+ 
 
-    onClickExample = e =>{
-        if(!this.state.hasData){
+    onClickExample = (Event) =>{
+       
             this.getData()
-        }
-        this.setState({isModalVisible:true})
+       
+       
     }
 
     getEquation = (Event) =>{
@@ -92,13 +86,7 @@ class Bisection extends React.Component{
 
         return(
             <div>
-                   <Modal_roe
-                    visible={this.state.isModalVisible}
-                    onOK={this.onClickOk}
-                    hasData={this.state.hasData}
-                    apiData = {this.state.apiData}
-                    onClick={this.onClickInsert}
-                />
+
                 <div className="content-box">
 
                     <div style = {{ fontWeight : "bold" , fontSize : "20px"}}>

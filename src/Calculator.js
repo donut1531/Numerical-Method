@@ -42,7 +42,7 @@ export function copyArray(n,matrix){
     let arr = []
     for(let i = 0;i < n ; i++){
         arr.push([])
-        arr[i] = [].concat(matrix[i])
+        arr[i] = [...matrix[i]]
     }
     return arr;
 }
@@ -59,7 +59,7 @@ export function calBisection  (initialEquation ,initialXL,initialXR,initialError
 
     let error = math.bignumber(initialError)
     
-    console.log("arr")
+   
 
 
     let arr = []
@@ -99,15 +99,15 @@ export function calBisection  (initialEquation ,initialXL,initialXR,initialError
 
       
         arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-        <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {xm.toFixed(9).toString()}</span>
-        <span > Error : {checkError.toFixed(9).toString()}</span>
+        <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {xm.toFixed(9)}</span>
+        <span > Error : {checkError.toFixed(9)}</span>
         </div>);
         i++;
-        console.log(xm.toString())
+        
        
     
     }
-    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {xm.toFixed(9).toString()}</div>);
+    arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {xm.toFixed(9)}</div>);
             
     return arr;
 }
@@ -158,15 +158,15 @@ export function calFalse(initialEquation ,initialXL,initialXR,initialError){
         oldX1 = x1
 
         arr.push(<div style = {{fontSize : '25px' ,display : 'flex'}}>
-        <span style = {{width : '40%' , textAlign : 'left'}}> Iteration {i} : X is {x1.toFixed(9).toString()} </span>
-        <span > Error : {checkError.toFixed(9).toString()} </span>
+        <span style = {{width : '40%' , textAlign : 'left'}}> Iteration {i} : X is {x1.toFixed(9)} </span>
+        <span > Error : {checkError.toFixed(9)} </span>
 
         </div>)
         
         i++
         
      }
-     arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}>RESULT OF X IS {x1.toFixed(9).toString()} </div>)
+     arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}>RESULT OF X IS {x1.toFixed(9)} </div>)
        
      return arr
 }
@@ -178,7 +178,7 @@ export function calOnepoint(initialEquation ,initialX,initialError){
      equation = math.parse(equation).compile()
      
      let X = math.bignumber(initialX)
-     console.log('aaa')
+    
      let error = math.bignumber(initialError)
      
      let arr = []
@@ -207,15 +207,15 @@ export function calOnepoint(initialEquation ,initialX,initialError){
          
        
        
-        
+        console.log(X.toFixed(9))
         arr.push(<div style = {{fontSize : '25px' , display : 'flex' }}>
-        <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {X.toFixed(9).toString()}</span>
-        <span > Error : {checkError.toFixed(9).toString()}</span>
+        <span style = {{ width : '40%' , textAlign : 'left'}}> Iteration {i} : x is {X.toFixed(9)}</span>
+        <span > Error : {checkError.toFixed(9)}</span>
         </div>);
         
         i++;
      }
-      arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X.toFixed(9).toString()}</div>);
+      arr.push(<div style = {{fontSize:'40px' , fontWeight : 'bold',textAlign : 'left'}}> Result of x is {X.toFixed(9)}</div>);
      return arr
 }
 
